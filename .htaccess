@@ -1,0 +1,43 @@
+# Méridel — configuration Apache (Infomaniak)
+
+# HTTPS : redirection assurée par Infomaniak + en-tête HSTS ci-dessous.
+# Ne pas utiliser RewriteCond %{HTTPS} ici : le SSL est terminé en amont (boucle de redirection).
+
+# Page d'erreur
+ErrorDocument 404 /404.html
+
+# Types
+AddType font/woff2 .woff2
+AddType application/manifest+json .webmanifest
+AddType image/webp .webp
+AddDefaultCharset utf-8
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/manifest+json image/svg+xml text/xml application/xml text/plain
+</IfModule>
+
+# Cache : HTML, CSS et JS toujours revalidés (fichiers non versionnés), images 1 jour, polices 1 an
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(svg|png|webp)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.(woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # En-têtes de sécurité
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
