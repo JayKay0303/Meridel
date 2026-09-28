@@ -29,7 +29,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=20260928-atelier1"><link rel="stylesheet" href="css/atelier.css?v=20260928-atelier1">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {
@@ -54,7 +54,7 @@
 }
 </script>
 <script defer src="config.js?v=2"></script>
-<script type="module" src="js/main.js"></script>
+<script type="module" src="js/main-atelier.js?v=20260928-atelier1"></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -196,82 +196,36 @@
 
   <!-- 5 · Votre nom, mis en scène -->
   <section class="section nameplay" id="votre-nom" aria-labelledby="nameplay-title">
-    <div class="wrap">
-      <p class="overline">Votre nom, mis en scène</p>
-      <h2 class="h2" id="nameplay-title" data-words data-line-anchor="left">Écrivez votre nom. Voyez-le prendre forme.</h2>
-      <div class="np" data-nameplay>
-        <div class="np__controls">
-          <label class="np__label" for="np-input">Le nom de votre entreprise</label>
-          <input class="np__input" id="np-input" type="text" maxlength="40" autocomplete="organization" spellcheck="false" placeholder="Le nom de votre entreprise" data-np-input>
-          <p class="micro np__privacy">Rien n’est envoyé ni enregistré : tout reste dans votre navigateur.</p>
-          <fieldset class="np__dirs">
-            <legend class="np__legend">Style</legend>
-            <label class="np__dir"><input type="radio" name="np-dir" value="classique" checked><span>Classique</span></label>
-            <label class="np__dir"><input type="radio" name="np-dir" value="contemporain"><span>Contemporain</span></label>
-            <label class="np__dir"><input type="radio" name="np-dir" value="audacieux"><span>Audacieux</span></label>
-            <label class="np__dir"><input type="radio" name="np-dir" value="naturel"><span>Naturel</span></label>
-          </fieldset>
-          <fieldset class="np__dirs">
-            <legend class="np__legend">En situation</legend>
-            <label class="np__dir"><input type="radio" name="np-dir" value="carte"><span>Carte de visite</span></label>
-            <label class="np__dir"><input type="radio" name="np-dir" value="enseigne"><span>Enseigne</span></label>
-            <label class="np__dir"><input type="radio" name="np-dir" value="mobile"><span>Site mobile</span></label>
-          </fieldset>
-        </div>
-        <div class="np__stage" data-np-stage data-dir="classique" aria-live="polite">
-          <div class="np__bg np__bg--classique" aria-hidden="true"></div>
-          <div class="np__bg np__bg--contemporain" aria-hidden="true"></div>
-          <div class="np__bg np__bg--audacieux" aria-hidden="true"></div>
-          <div class="np__bg np__bg--naturel" aria-hidden="true"></div>
-          <div class="np__bg np__bg--carte" aria-hidden="true"></div>
-          <div class="np__bg np__bg--enseigne" aria-hidden="true"></div>
-          <div class="np__bg np__bg--mobile" aria-hidden="true"></div>
-          <div class="np__frame" aria-hidden="true"></div>
-          <p class="np__name"><span class="np__text" data-np-text>Votre entreprise</span></p>
-          <svg class="np__leaf" viewBox="0 0 120 20" aria-hidden="true" focusable="false"><path pathLength="1" d="M2 14 C 30 2, 60 2, 90 12 S 112 16, 118 8"/></svg>
-
-          <div class="np__scene np__scene--carte" aria-hidden="true" data-np-card>
-            <div class="np__card">
-              <div class="np__card-face np__card-front"><span class="np__card-name" data-np-name>Votre entreprise</span><span class="np__card-rule"></span><span class="np__card-sub">Suisse romande</span></div>
-              <div class="np__card-face np__card-back"><span class="np__card-mono" data-np-initial>V</span><span class="np__card-url"><span data-np-slug>votre-entreprise</span>.ch</span></div>
-            </div>
-          </div>
-
-          <div class="np__scene np__scene--enseigne" aria-hidden="true">
-            <div class="np__shop">
-              <div class="np__sign"><span data-np-name>Votre entreprise</span></div>
-              <div class="np__awning"></div>
-              <div class="np__front">
-                <div class="np__window"><span class="np__open">Ouvert</span></div>
-                <div class="np__door"></div>
-                <div class="np__window"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="np__scene np__scene--mobile" aria-hidden="true">
-            <div class="np__phone">
-              <div class="np__screen">
-                <div class="np__topbar"><span class="np__phone-logo" data-np-name>Votre entreprise</span><span class="np__burger"><i></i><i></i></span></div>
-                <div class="np__phone-hero">
-                  <span class="np__phone-kicker">Bienvenue chez</span>
-                  <span class="np__phone-title" data-np-name>Votre entreprise</span>
-                  <span class="np__phone-btn">Prendre rendez-vous</span>
-                </div>
-                <div class="np__phone-cards"><span></span><span></span></div>
-              </div>
-            </div>
-          </div>
-
-          <p class="np__caption" aria-hidden="true"><span data-np-caption>Classique — sobre et intemporel</span></p>
-        </div>
-      </div>
-      <div class="np__outro">
-        <p class="lead">Chaque entreprise a sa voix. Nous la traduisons en design.</p>
-        <a class="btn btn--primary" href="#contact" data-magnetic>Parlons de la vôtre <span class="btn__arrow" aria-hidden="true">→</span></a>
-      </div>
+ <div class="wrap">
+  <p class="overline">L’atelier de votre identité</p>
+  <h2 class="h2" id="nameplay-title" data-words data-line-anchor="left">Votre nom. Votre caractère.</h2>
+  <div class="atelier" data-nameplay>
+   <div class="atelier__controls">
+    <label class="np__label" for="np-input">Le nom de votre entreprise</label>
+    <input class="np__input" id="np-input" maxlength="40" autocomplete="organization" placeholder="Votre entreprise" data-np-input>
+    <fieldset class="atelier__group"><legend>01 / Une voix</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-font" value="classique" checked><span>Classique</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="contemporain" ><span>Contemporain</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="audacieux" ><span>Audacieux</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="naturel" ><span>Naturel</span></label></div></fieldset>
+    <fieldset class="atelier__group"><legend>02 / Une couleur</legend><div class="atelier__colors"><label class="atelier__swatch" style="--swatch:#111A22"><input type="radio" name="logo-color" value="encre" checked><span aria-hidden="true"></span><span class="vh">Encre</span></label><label class="atelier__swatch" style="--swatch:#1F4E5A"><input type="radio" name="logo-color" value="leman" ><span aria-hidden="true"></span><span class="vh">Léman</span></label><label class="atelier__swatch" style="--swatch:#9B4327"><input type="radio" name="logo-color" value="terre" ><span aria-hidden="true"></span><span class="vh">Terre cuite</span></label><label class="atelier__swatch" style="--swatch:#365743"><input type="radio" name="logo-color" value="foret" ><span aria-hidden="true"></span><span class="vh">Forêt</span></label><label class="atelier__swatch" style="--swatch:#67415C"><input type="radio" name="logo-color" value="prune" ><span aria-hidden="true"></span><span class="vh">Prune</span></label><label class="atelier__swatch" style="--swatch:#304F9B"><input type="radio" name="logo-color" value="cobalt" ><span aria-hidden="true"></span><span class="vh">Cobalt</span></label><span class="micro" data-color-name>Encre</span></div></fieldset>
+    <fieldset class="atelier__group"><legend>03 / Un signe distinctif</legend><div class="atelier__choices atelier__symbols"><label class="atelier__choice"><input type="radio" name="logo-symbol" value="none" checked><span>Aucun</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="monogram" ><span>Initiales</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="leaf" ><span>Feuille</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="sun" ><span>Soleil</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="spark" ><span>Éclat</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="arch" ><span>Arche</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="peak" ><span>Sommet</span></label></div></fieldset>
+    <details class="atelier__details"><summary>Affiner la composition <span aria-hidden="true">+</span></summary>
+     <fieldset class="atelier__group"><legend>Disposition</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-layout" value="inline" checked><span>En ligne</span></label><label class="atelier__choice"><input type="radio" name="logo-layout" value="stack" ><span>Empilée</span></label></div></fieldset>
+     <label class="atelier__range" for="logo-spacing">Espacement <input id="logo-spacing" type="range" min="0" max="5" step="0.5" value="0"></label>
+    </details>
+    <button class="atelier__inspire link-draw" type="button" data-inspire>Inspirez-moi <span aria-hidden="true">↗</span></button>
+   </div>
+   <div class="atelier__preview">
+    <fieldset class="atelier__views"><legend class="vh">Voir votre identité en situation</legend><label class="atelier__choice"><input type="radio" name="logo-view" value="logo" checked><span>Logo</span></label><label class="atelier__choice"><input type="radio" name="logo-view" value="card" ><span>Carte</span></label><label class="atelier__choice"><input type="radio" name="logo-view" value="shop" ><span>Enseigne</span></label><label class="atelier__choice"><input type="radio" name="logo-view" value="phone" ><span>Mobile</span></label></fieldset>
+    <div class="atelier__canvas" data-canvas>
+     <div class="atelier__scene atelier__scene--logo" data-scene="logo"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg><p class="atelier__signature">Une première idée. Déjà votre caractère.</p></div>
+     <div class="atelier__scene" data-scene="card" hidden><button class="atelier__card" type="button" aria-label="Retourner la carte de visite" aria-pressed="false" data-flip><span class="atelier__card-inner"><span class="atelier__card-front"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg><span class="atelier__card-tag">Suisse romande</span></span><span class="atelier__card-back" aria-hidden="true"><span>Contact</span><strong data-card-name></strong><span>Votre prochaine rencontre.</span></span></span></button><p class="atelier__hint">Touchez la carte pour la retourner ↻</p></div>
+     <div class="atelier__scene" data-scene="shop" hidden><div class="atelier__shop"><div class="atelier__sign"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg></div><div class="atelier__awning"></div><div class="atelier__facade"><span></span><span class="atelier__door"><i>Ouvert</i></span><span></span></div></div><p class="atelier__hint">Une identité qui a pignon sur rue.</p></div>
+     <div class="atelier__scene" data-scene="phone" hidden><div class="atelier__phone"><div class="atelier__phone-top"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg><span aria-hidden="true">☰</span></div><div class="atelier__phone-body"><small>BIENVENUE CHEZ VOUS</small><strong data-phone-name></strong><p>Le savoir-faire qui fait la différence.</p><span class="atelier__phone-cta">Découvrir nos services ↗</span><div class="atelier__phone-art" aria-hidden="true"><i></i><i></i><i></i></div></div></div></div>
     </div>
-  </section>
+    <div class="atelier__footer"><p class="micro" data-logo-status role="status">Classique · Encre · Aucun</p><button class="link-draw" type="button" data-logo-reset>Réinitialiser</button></div>
+   </div>
+  </div>
+  <div class="np__outro"><div><p class="lead">Une piste vous plaît ? Faisons-en votre identité.</p><p class="micro">Exploration libre, sans envoi ni enregistrement. Une direction à affiner ensemble.</p></div><a class="btn btn--primary" href="#contact" data-logo-contact>Partir de cette idée <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+ </div>
+</section>
 
   <!-- 6 · Méthode -->
   <section class="section methode tone-night" id="methode" aria-labelledby="methode-title" data-methode>
@@ -314,7 +268,7 @@
       <div class="projet__intro">
         <p class="overline">Votre projet</p>
         <h2 class="h2" id="projet-title" data-words data-line-anchor="left">Votre projet en 30 secondes.</h2>
-        <p class="lead">Quatre questions pour savoir quelle formule vous correspond. Sans inscription, rien n’est enregistré.</p>
+        <p class="lead">Quatre questions pour savoir quelle formule vous correspond. Une question à la fois, puis une formule adaptée.</p>
       </div>
 
       <form class="quiz" data-quiz novalidate>
@@ -330,7 +284,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="quiz__step" data-step="2">
+        <fieldset class="quiz__step" data-step="2" hidden>
           <legend class="quiz__q" tabindex="-1"><span class="quiz__count">02 / 04</span>Qu’attendez-vous d’abord de votre site ?</legend>
           <div class="quiz__opts">
             <label class="quiz__opt"><input type="radio" name="objectif" value="presenter" data-label="présenter mes services"><span>Présenter clairement mes services</span></label>
@@ -340,7 +294,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="quiz__step" data-step="3">
+        <fieldset class="quiz__step" data-step="3" hidden>
           <legend class="quiz__q" tabindex="-1"><span class="quiz__count">03 / 04</span>Combien avez-vous à présenter ?</legend>
           <div class="quiz__opts">
             <label class="quiz__opt"><input type="radio" name="contenu" value="0" data-label="une page"><span>L’essentiel tient sur une page</span></label>
@@ -350,7 +304,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="quiz__step" data-step="4">
+        <fieldset class="quiz__step" data-step="4" hidden>
           <legend class="quiz__q" tabindex="-1"><span class="quiz__count">04 / 04</span>Pour quand ?</legend>
           <div class="quiz__opts">
             <label class="quiz__opt"><input type="radio" name="calendrier" value="vite" data-label="dès que possible"><span>Dès que possible</span></label>
@@ -366,7 +320,7 @@
           <p class="quiz__price" data-quiz-price></p>
           <ul class="ticks quiz__why" role="list" data-quiz-why></ul>
           <div class="quiz__actions">
-            <a class="btn btn--primary" href="#contact" data-quiz-cta data-magnetic>Parlons de cette formule <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--primary" href="#contact" data-quiz-cta data-magnetic>Continuer vers le contact <span class="btn__arrow" aria-hidden="true">→</span></a>
             <a class="link-draw" href="#offres" data-quiz-see>Voir le détail des offres</a>
           </div>
           <button class="quiz__restart" type="button" data-quiz-restart>Recommencer</button>
@@ -565,11 +519,12 @@
       <h2 class="h2" id="contact-title" data-words data-line-anchor="left">Parlons de votre projet.</h2>
 
       <form class="phrase" id="contact-form" novalidate data-contact>
+<p class="contact__recommendation" data-contact-recommendation hidden role="status"></p>
         <p class="phrase__text">
-          Bonjour, je m’appelle
+          Bonjour, <span data-contact-name>je m’appelle
           <label class="vh" for="f-name">Votre nom</label>
           <span class="phrase__slot"><input class="phrase__field" id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="votre nom" size="10" aria-describedby="err-name">,</span>
-          je dirige
+          </span>je dirige
           <label class="vh" for="f-company">Votre entreprise ou activité</label>
           <input class="phrase__field" id="f-company" name="company" type="text" autocomplete="organization" required maxlength="120" placeholder="votre entreprise / activité" size="20" aria-describedby="err-company">
           à
