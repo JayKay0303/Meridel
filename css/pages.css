@@ -57,8 +57,8 @@
 .home-hero__actions { margin-top: var(--s4); justify-content: flex-start; }
 .home-hero__meta { grid-column: 1 / -1; margin-top: clamp(16px, 4vh, 48px); }
 @media (min-width: 1024px) {
-  .home-hero { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); column-gap: clamp(32px, 4vw, 72px); align-items: center; }
-  .home-hero__actions { justify-content: flex-start; }
+  .home-hero__title { font-size: clamp(56px, 8px + 7.6vw, 132px); max-width: 16ch; }
+  .home-hero .hero__lead { max-width: 52ch; }
 }
 @media (max-width: 1023.98px) {
   .hero--home { min-height: 0; display: block; padding-top: calc(var(--header-h) + clamp(40px, 8vh, 72px)); }
@@ -160,8 +160,9 @@
    Octobre 2026 · v3 — comparateur, fin de page, WhatsApp, langues, menu mobile
    ========================================================================== */
 
-/* La ligne-méridien ne dépasse jamais du bas de la page */
-body { position: relative; overflow: clip; }
+/* La ligne-méridien est positionnée par rapport au corps de la page (sa hauteur est recalculée par line.js) */
+body { position: relative; }
+.meridian-wrap { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
 
 /* Comparateur avant / après (accueil) ------------------------------------- */
 @property --x { syntax: "<percentage>"; inherits: true; initial-value: 58%; }

@@ -246,10 +246,11 @@ export function initLine() {
       build();
       onFrame(update, { resize: false });
       const rebuild = debounce(build, 200);
-      let lastW = window.innerWidth; let lastH = document.documentElement.scrollHeight;
+      // On suit la hauteur du contenu (pas celle du document, que la ligne elle-même allonge).
+      let lastW = window.innerWidth; let lastH = document.body.offsetHeight;
       if ('ResizeObserver' in window) {
         new ResizeObserver(() => {
-          const w = window.innerWidth; const h = document.documentElement.scrollHeight;
+          const w = window.innerWidth; const h = document.body.offsetHeight;
           if (w !== lastW || Math.abs(h - lastH) > 2) { lastW = w; lastH = h; rebuild(); }
         }).observe(document.body);
       } else {
