@@ -3,11 +3,13 @@
 # Pas de liste des fichiers d'un dossier (audit sécurité, oct. 2026)
 Options -Indexes
 
-# HTTPS forcé. Le chiffrement est géré en amont par Infomaniak : %{HTTPS} n'est pas fiable ici
-# (risque de boucle), on se fie donc à l'en-tête X-Forwarded-Proto transmis par leur proxy.
+# HTTPS forcé. Le chiffrement est géré en amont par Infomaniak : %{HTTPS} vaut toujours « off » ici
+# (d'où l'ancienne boucle). Testé le 17.10.2026 : sur une requête https, X-Forwarded-Proto = https
+# et %{ENV:HTTPS} = 1. On redirige seulement quand aucun des deux n'indique https (pas de boucle possible).
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{HTTP:X-Forwarded-Proto} =http [NC]
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https [NC]
+  RewriteCond %{ENV:HTTPS} !=1
   RewriteRule ^ https://meridel.ch%{REQUEST_URI} [L,R=301]
   RewriteCond %{HTTP_HOST} ^www\.meridel\.ch$ [NC]
   RewriteRule ^ https://meridel.ch%{REQUEST_URI} [L,R=301]
