@@ -81,6 +81,8 @@ export function initLine() {
 
   function build() {
     // --- 1. Lectures (une seule mise en page) -----------------------------
+    // La ligne ne doit jamais allonger la page : on la replie avant de mesurer la hauteur réelle.
+    svg.style.height = '0px';
     const W = document.documentElement.clientWidth;
     const docH = document.documentElement.scrollHeight;
     const sx = window.scrollX; const sy = window.scrollY;

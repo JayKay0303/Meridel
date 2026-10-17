@@ -29,12 +29,14 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261017">
-<link rel="stylesheet" href="css/atelier.css?v=20261017">
-<link rel="stylesheet" href="css/pages.css?v=20261017">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/site.css?v=20261017c">
+<link rel="stylesheet" href="css/atelier.css?v=20261017c">
+<link rel="stylesheet" href="css/pages.css?v=20261017c">
+<link rel="alternate" hreflang="fr" href="https://meridel.ch/atelier.html">
+<link rel="alternate" hreflang="en" href="https://meridel.ch/en/identity.html">
+<script src="js/boot.js?v=20261017c"></script>
 <script defer src="config.js?v=2"></script>
-<script type="module" src="js/site.js?v=20261017"></script>
+<script type="module" src="js/site.js?v=20261017c"></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -55,6 +57,7 @@
         <li><a class="nav__link" href="studio.html">Studio</a></li>
         <li><a class="nav__link" href="atelier.html" aria-current="page">Atelier</a></li>
       </ul>
+      <div class="lang" role="group" aria-label="Langue"><a class="lang__link" href="atelier.html" lang="fr" hreflang="fr" aria-current="true">FR</a><a class="lang__link" href="en/identity.html" lang="en" hreflang="en">EN</a></div>
       <a class="btn btn--primary btn--sm nav__cta" href="contact.html" data-magnetic>Parlons-en</a>
     </nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" data-menu-toggle>
@@ -80,7 +83,7 @@
     <label class="np__label" for="np-input">Le nom de votre entreprise</label>
     <input class="np__input" id="np-input" maxlength="40" autocomplete="organization" placeholder="Votre entreprise" data-np-input>
     <fieldset class="atelier__group"><legend>01 / Une voix</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-font" value="classique" checked><span>Classique</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="contemporain" ><span>Contemporain</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="audacieux" ><span>Audacieux</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="naturel" ><span>Naturel</span></label></div></fieldset>
-    <fieldset class="atelier__group"><legend>02 / Une couleur</legend><div class="atelier__colors"><label class="atelier__swatch" style="--swatch:#111A22"><input type="radio" name="logo-color" value="encre" checked><span aria-hidden="true"></span><span class="vh">Encre</span></label><label class="atelier__swatch" style="--swatch:#1F4E5A"><input type="radio" name="logo-color" value="leman" ><span aria-hidden="true"></span><span class="vh">Léman</span></label><label class="atelier__swatch" style="--swatch:#9B4327"><input type="radio" name="logo-color" value="terre" ><span aria-hidden="true"></span><span class="vh">Terre cuite</span></label><label class="atelier__swatch" style="--swatch:#365743"><input type="radio" name="logo-color" value="foret" ><span aria-hidden="true"></span><span class="vh">Forêt</span></label><label class="atelier__swatch" style="--swatch:#67415C"><input type="radio" name="logo-color" value="prune" ><span aria-hidden="true"></span><span class="vh">Prune</span></label><label class="atelier__swatch" style="--swatch:#304F9B"><input type="radio" name="logo-color" value="cobalt" ><span aria-hidden="true"></span><span class="vh">Cobalt</span></label><span class="micro" data-color-name>Encre</span></div></fieldset>
+    <fieldset class="atelier__group"><legend>02 / Une couleur</legend><div class="atelier__colors"><label class="atelier__swatch" data-swatch="encre"><input type="radio" name="logo-color" value="encre" checked><span aria-hidden="true"></span><span class="vh">Encre</span></label><label class="atelier__swatch" data-swatch="leman"><input type="radio" name="logo-color" value="leman" ><span aria-hidden="true"></span><span class="vh">Léman</span></label><label class="atelier__swatch" data-swatch="terre"><input type="radio" name="logo-color" value="terre" ><span aria-hidden="true"></span><span class="vh">Terre cuite</span></label><label class="atelier__swatch" data-swatch="foret"><input type="radio" name="logo-color" value="foret" ><span aria-hidden="true"></span><span class="vh">Forêt</span></label><label class="atelier__swatch" data-swatch="prune"><input type="radio" name="logo-color" value="prune" ><span aria-hidden="true"></span><span class="vh">Prune</span></label><label class="atelier__swatch" data-swatch="cobalt"><input type="radio" name="logo-color" value="cobalt" ><span aria-hidden="true"></span><span class="vh">Cobalt</span></label><span class="micro" data-color-name>Encre</span></div></fieldset>
     <fieldset class="atelier__group"><legend>03 / Un signe tiré de votre nom</legend><div class="atelier__marks"><label class="atelier__mark"><input type="radio" name="logo-symbol" value="none" checked><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false"><path d="M14 50L50 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg><small>Aucun</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="monogram"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="monogram"></svg><small>Initiales</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="sceau"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="sceau"></svg><small>Sceau</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="taille"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="taille"></svg><small>Taille</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="entrelacs"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="entrelacs"></svg><small>Entrelacs</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="rythme"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="rythme"></svg><small>Rythme</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="trace"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="trace"></svg><small>Tracé</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="ecusson"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="ecusson"></svg><small>Écusson</small></span></label></div><button class="atelier__variants link-draw" type="button" data-variants>Autres variantes <span aria-hidden="true">↻</span></button></fieldset>
     <details class="atelier__details"><summary>Affiner la composition <span aria-hidden="true">+</span></summary>
      <fieldset class="atelier__group"><legend>Disposition</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-layout" value="inline" checked><span>En ligne</span></label><label class="atelier__choice"><input type="radio" name="logo-layout" value="stack" ><span>Empilée</span></label></div></fieldset>
@@ -132,6 +135,8 @@
     <p class="site-footer__copy micro">© 2026 Méridel · Genève</p>
   </div>
 </footer>
+
+<a class="wa-fab" href="https://wa.me/41767006297" data-wa-direct data-wa-fab rel="noopener" aria-label="Écrire à Méridel sur WhatsApp"><svg class="icon-chat" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 18.5 5.6 15A7.5 7.5 0 1 1 9 18.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 10.5h6M9 13.5h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="wa-fab__label">WhatsApp</span></a>
 
 </body>
 </html>

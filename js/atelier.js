@@ -1,21 +1,22 @@
 import { saveHandoff } from './handoff.js';
+import { t, LANG } from './i18n.js';
 
 // Atelier d'identité : typographie, couleur et signe distinctif dessiné à partir du nom saisi.
 // Le texte saisi est toujours inséré via textContent. Rien n'est envoyé ni enregistré.
 const NS = 'http://www.w3.org/2000/svg';
 const FONTS = {
-  classique: ['Fraunces, Georgia, serif', 440, 'Classique'],
-  contemporain: ['Inter Tight, Arial, sans-serif', 500, 'Contemporain'],
-  audacieux: ['Inter Tight, Arial, sans-serif', 600, 'Audacieux'],
-  naturel: ['Fraunces Soft, Georgia, serif', 450, 'Naturel']
+  classique: ['Fraunces, Georgia, serif', 440, t('Classique', 'Classic')],
+  contemporain: ['Inter Tight, Arial, sans-serif', 500, t('Contemporain', 'Contemporary')],
+  audacieux: ['Inter Tight, Arial, sans-serif', 600, t('Audacieux', 'Bold')],
+  naturel: ['Fraunces Soft, Georgia, serif', 450, t('Naturel', 'Natural')]
 };
 const COLORS = {
-  encre: ['#111A22', 'Encre'], leman: ['#1F4E5A', 'Léman'], terre: ['#9B4327', 'Terre cuite'],
-  foret: ['#365743', 'Forêt'], prune: ['#67415C', 'Prune'], cobalt: ['#304F9B', 'Cobalt']
+  encre: ['#111A22', t('Encre', 'Ink')], leman: ['#1F4E5A', t('Léman', 'Lake')], terre: ['#9B4327', t('Terre cuite', 'Terracotta')],
+  foret: ['#365743', t('Forêt', 'Forest')], prune: ['#67415C', t('Prune', 'Plum')], cobalt: ['#304F9B', 'Cobalt']
 };
 const SYMBOLS = {
-  none: 'Aucun', monogram: 'Initiales', sceau: 'Sceau', taille: 'Taille',
-  entrelacs: 'Entrelacs', rythme: 'Rythme', trace: 'Tracé', ecusson: 'Écusson'
+  none: t('Aucun', 'None'), monogram: t('Initiales', 'Initials'), sceau: t('Sceau', 'Seal'), taille: t('Taille', 'Cut'),
+  entrelacs: t('Entrelacs', 'Interlace'), rythme: t('Rythme', 'Rhythm'), trace: t('Tracé', 'Stroke'), ecusson: t('Écusson', 'Crest')
 };
 
 const node = (tag, attrs = {}, text) => {
@@ -39,9 +40,9 @@ const firstLetter = (w) => Array.from(w).find((c) => /[\p{L}\p{N}]/u.test(c)) ||
 function drawMark(kind, ctx) {
   const { name, color, font, weight, soft, seed, uid } = ctx;
   const ws = words(name);
-  const initials = (ws.length > 1 ? ws.slice(0, 2).map(firstLetter) : [firstLetter(ws[0] || 'M')]).join('').toLocaleUpperCase('fr');
+  const initials = (ws.length > 1 ? ws.slice(0, 2).map(firstLetter) : [firstLetter(ws[0] || 'M')]).join('').toLocaleUpperCase(LANG);
   const first = initials[0] || 'M';
-  const second = ws.length > 1 ? firstLetter(ws[1]).toLocaleUpperCase('fr') : (Array.from(plain(name)).pop() || first).toLocaleUpperCase('fr');
+  const second = ws.length > 1 ? firstLetter(ws[1]).toLocaleUpperCase(LANG) : (Array.from(plain(name)).pop() || first).toLocaleUpperCase(LANG);
   const letters = Array.from(plain(name) || 'meridel');
   const h = hash(plain(name) + '|' + seed);
   const pick = (n, shift = 0) => ((h >>> shift) % n + n) % n;
@@ -62,7 +63,7 @@ function drawMark(kind, ctx) {
   if (kind === 'sceau') {
     // Le nom fait le tour du sceau ; l'initiale au centre.
     const r = 24.5, circ = 2 * Math.PI * r;
-    const base = name.toLocaleUpperCase('fr');
+    const base = name.toLocaleUpperCase(LANG);
     let ring = base + ' · ';
     while (ring.length < 26) ring += base + ' · ';
     const size = Math.min(6.4, circ / (ring.length * 0.78));
@@ -161,7 +162,7 @@ export function initNameplay() {
   const defaults = { font: 'classique', color: 'encre', symbol: 'none', layout: 'inline', view: 'logo', spacing: 0, seed: 1 };
   const state = { ...defaults };
   const clean = (v) => v.replace(/[\u0000-\u001f\u007f]/g, '').replace(/\s+/g, ' ').slice(0, 40).trim();
-  const name = () => clean(input.value) || 'Votre entreprise';
+  const name = () => clean(input.value) || t('Votre entreprise', 'Your business');
   const thumbs = [...root.querySelectorAll('[data-mark]')];
   let frame = 0;
 
@@ -190,7 +191,7 @@ export function initNameplay() {
       const group = svg.querySelector('[data-logo-symbol]');
       const has = state.symbol !== 'none';
       const stack = has && state.layout === 'stack';
-      text.textContent = state.font === 'audacieux' ? shown.toLocaleUpperCase('fr') : shown;
+      text.textContent = state.font === 'audacieux' ? shown.toLocaleUpperCase(LANG) : shown;
       text.style.fontFamily = font;
       text.style.fontWeight = weight;
       text.style.fontVariationSettings = `"wght" ${weight}, "opsz" 72, "SOFT" ${state.font === 'naturel' ? 100 : 0}`;
@@ -281,8 +282,8 @@ export function initNameplay() {
 
   // « Partir de cette idée » : la piste choisie suit le visiteur jusqu'à la page Contact.
   document.querySelector('[data-logo-contact]')?.addEventListener('click', () => {
-    const sign = state.symbol === 'none' ? 'sans signe' : `signe ${SYMBOLS[state.symbol]} (variante ${state.seed})`;
-    const summary = `Piste d’identité : ${name()} · ${FONTS[state.font][2]} · ${COLORS[state.color][1]} · ${sign} · ${state.layout === 'stack' ? 'empilée' : 'en ligne'}.`;
+    const sign = state.symbol === 'none' ? t('sans signe', 'no mark') : `${t('signe', 'mark')} ${SYMBOLS[state.symbol]} (${t('variante', 'variation')} ${state.seed})`;
+    const summary = `${t('Piste d’identité :', 'Identity direction:')} ${name()} · ${FONTS[state.font][2]} · ${COLORS[state.color][1]} · ${sign} · ${state.layout === 'stack' ? t('empilée', 'stacked') : t('en ligne', 'inline')}.`;
     saveHandoff({ logo: summary, ...(clean(input.value) ? { company: clean(input.value) } : {}) });
   });
 

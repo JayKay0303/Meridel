@@ -1,5 +1,6 @@
 // En-tête : menu mobile plein écran (focus piégé, Échap), masquage au défilement, lien actif.
 import { onFrame } from './util.js';
+import { t } from './i18n.js';
 
 export function initNav() {
   const header = document.querySelector('[data-header]');
@@ -16,7 +17,7 @@ export function initNav() {
   function setOpen(open, { restoreFocus = true } = {}) {
     if (!toggle) return;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.querySelector('.menu-toggle__label').textContent = open ? 'Fermer' : 'Menu';
+    toggle.querySelector('.menu-toggle__label').textContent = open ? t('Fermer', 'Close') : 'Menu';
     nav.classList.toggle('is-open', open);
     root.classList.toggle('menu-open', open);
     header.classList.remove('is-hidden');

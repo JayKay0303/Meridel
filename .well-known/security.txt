@@ -1,0 +1,4 @@
+Contact: mailto:contact@meridel.ch
+Expires: 2027-10-17T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://meridel.ch/.well-known/security.txt

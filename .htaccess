@@ -1,7 +1,20 @@
 # Méridel — configuration Apache (Infomaniak)
 
-# HTTPS : redirection assurée par Infomaniak + en-tête HSTS ci-dessous.
-# Ne pas utiliser RewriteCond %{HTTPS} ici : le SSL est terminé en amont (boucle de redirection).
+# Pas de liste des fichiers d'un dossier (audit sécurité, oct. 2026)
+Options -Indexes
+
+# HTTPS forcé. Le chiffrement est géré en amont par Infomaniak : %{HTTPS} n'est pas fiable ici
+# (risque de boucle), on se fie donc à l'en-tête X-Forwarded-Proto transmis par leur proxy.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http [NC]
+  RewriteRule ^ https://meridel.ch%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} ^www\.meridel\.ch$ [NC]
+  RewriteRule ^ https://meridel.ch%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Anciens scripts du site sur une seule page : plus utilisés, plus servis.
+RedirectMatch 404 ^/js/(main|main-atelier|contact|nameplay|quiz|globe)\.js$
 
 # Page d'erreur
 ErrorDocument 404 /404.html
@@ -25,6 +38,9 @@ AddDefaultCharset utf-8
   <FilesMatch "\.(css|js|webmanifest)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
+  <FilesMatch "\.(txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
   <FilesMatch "\.(svg|png|webp)$">
     Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
@@ -33,11 +49,12 @@ AddDefaultCharset utf-8
   </FilesMatch>
 
   # En-têtes de sécurité
-  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "DENY"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
 </IfModule>
 

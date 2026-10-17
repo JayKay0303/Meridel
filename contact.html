@@ -29,12 +29,14 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20261017">
-<link rel="stylesheet" href="css/atelier.css?v=20261017">
-<link rel="stylesheet" href="css/pages.css?v=20261017">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/site.css?v=20261017c">
+<link rel="stylesheet" href="css/atelier.css?v=20261017c">
+<link rel="stylesheet" href="css/pages.css?v=20261017c">
+<link rel="alternate" hreflang="fr" href="https://meridel.ch/contact.html">
+<link rel="alternate" hreflang="en" href="https://meridel.ch/en/contact.html">
+<script src="js/boot.js?v=20261017c"></script>
 <script defer src="config.js?v=2"></script>
-<script type="module" src="js/site.js?v=20261017"></script>
+<script type="module" src="js/site.js?v=20261017c"></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -55,6 +57,7 @@
         <li><a class="nav__link" href="studio.html">Studio</a></li>
         <li><a class="nav__link" href="atelier.html">Atelier</a></li>
       </ul>
+      <div class="lang" role="group" aria-label="Langue"><a class="lang__link" href="contact.html" lang="fr" hreflang="fr" aria-current="true">FR</a><a class="lang__link" href="en/contact.html" lang="en" hreflang="en">EN</a></div>
       <a class="btn btn--primary btn--sm nav__cta" href="contact.html" aria-current="page" data-magnetic>Parlons-en</a>
     </nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" data-menu-toggle>
@@ -162,6 +165,8 @@
     <p class="site-footer__copy micro">© 2026 Méridel · Genève</p>
   </div>
 </footer>
+
+<a class="wa-fab" href="https://wa.me/41767006297" data-wa-direct data-wa-fab rel="noopener" aria-label="Écrire à Méridel sur WhatsApp"><svg class="icon-chat" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 18.5 5.6 15A7.5 7.5 0 1 1 9 18.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 10.5h6M9 13.5h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="wa-fab__label">WhatsApp</span></a>
 
 </body>
 </html>

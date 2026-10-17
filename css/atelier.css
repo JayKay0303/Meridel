@@ -59,3 +59,4 @@
   .atelier__mark svg{max-width:38px}
 }
 @media(prefers-reduced-motion:reduce){.atelier__mark>span{transition:none}}
+.atelier__swatch[data-swatch="encre"]{--swatch:#111A22}.atelier__swatch[data-swatch="leman"]{--swatch:#1F4E5A}.atelier__swatch[data-swatch="terre"]{--swatch:#9B4327}.atelier__swatch[data-swatch="foret"]{--swatch:#365743}.atelier__swatch[data-swatch="prune"]{--swatch:#67415C}.atelier__swatch[data-swatch="cobalt"]{--swatch:#304F9B}

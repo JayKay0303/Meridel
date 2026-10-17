@@ -1,6 +1,7 @@
 // Formulaire en forme de phrase : prépare un message WhatsApp ou un e-mail.
 // Rien n'est enregistré ni envoyé par le site lui-même.
 import { readHandoff, saveHandoff, clearHandoff } from './handoff.js';
+import { t } from './i18n.js';
 
 const cfg = () => window.SITE_CONFIG || {};
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -11,7 +12,7 @@ export function initContact() {
   const { whatsapp, email } = cfg();
 
   // Lien WhatsApp direct (message générique, formel).
-  const generic = 'Bonjour,\n\nJe vous contacte au sujet de la création de mon site web. Pourrions-nous en parler ?\n\nBien cordialement.';
+  const generic = t('Bonjour,\n\nJe vous contacte au sujet de la création de mon site web. Pourrions-nous en parler ?\n\nBien cordialement.', 'Hello,\n\nI am contacting you about creating my website. Could we talk about it?\n\nKind regards.');
   const waUrl = (msg) => `https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`;
   document.querySelectorAll('[data-wa-direct]').forEach((a) => { if (whatsapp) a.href = waUrl(generic); });
 
@@ -90,29 +91,30 @@ export function initContact() {
     e.preventDefault();
     const invalid = Object.values(fields).filter((f) => !check(f, true));
     if (invalid.length) {
-      status.textContent = invalid.length > 1 ? `${invalid.length} informations manquent pour compléter la phrase.` : 'Une information manque pour compléter la phrase.';
+      status.textContent = invalid.length > 1 ? t(`${invalid.length} informations manquent pour compléter la phrase.`, `${invalid.length} details are missing to complete the sentence.`) : t('Une information manque pour compléter la phrase.', 'One detail is missing to complete the sentence.');
       invalid[0].el.focus();
       return;
     }
     const v = (id) => (form.querySelector(id)?.value || '').trim();
     const name = v('#f-name'); const company = v('#f-company'); const city = v('#f-city');
-    const phrase = `Je m’appelle ${name}, je dirige ${company}${city ? ` à ${city}` : ''}. J’aimerais ${v('#f-goal')} et l’offre qui m’intéresse est ${v('#f-offer')}. Vous pouvez me répondre à ${v('#f-reply')}.`;
+    const phrase = t(`Je m’appelle ${name}, je dirige ${company}${city ? ` à ${city}` : ''}. J’aimerais ${v('#f-goal')} et l’offre qui m’intéresse est ${v('#f-offer')}. Vous pouvez me répondre à ${v('#f-reply')}.`,
+      `My name is ${name}, I run ${company}${city ? ` in ${city}` : ''}. I would like to ${v('#f-goal')} and the plan I am interested in is ${v('#f-offer')}. You can reply to me at ${v('#f-reply')}.`);
     const extra = [v('#f-more'), ...(form.dataset.quizSummary && !v('#f-more').includes(form.dataset.quizSummary) ? [form.dataset.quizSummary] : [])].filter(Boolean).join('\n\n');
-    const message = ['Bonjour,', '', phrase, ...(extra ? ['', extra] : []), '', 'Bien cordialement,', name].join('\n');
+    const message = [t('Bonjour,', 'Hello,'), '', phrase, ...(extra ? ['', extra] : []), '', t('Bien cordialement,', 'Kind regards,'), name].join('\n');
     const via = e.submitter?.value || 'whatsapp';
     clearHandoff();
 
     if (via === 'email' && email) {
-      const subject = `Projet de site — ${company}`;
+      const subject = t(`Projet de site — ${company}`, `Website project — ${company}`);
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-      status.textContent = 'Votre messagerie s’ouvre avec le message prêt. Il ne part qu’après votre confirmation.';
+      status.textContent = t('Votre messagerie s’ouvre avec le message prêt. Il ne part qu’après votre confirmation.', 'Your e-mail app opens with the message ready. It is only sent once you confirm.');
       return;
     }
     const url = waUrl(message);
     window.open(url, '_blank', 'noopener');
-    status.replaceChildren(document.createTextNode('Votre message est prêt dans WhatsApp. Il ne part qu’après votre confirmation. '));
+    status.replaceChildren(document.createTextNode(t('Votre message est prêt dans WhatsApp. Il ne part qu’après votre confirmation. ', 'Your message is ready in WhatsApp. It is only sent once you confirm. ')));
     const a = document.createElement('a');
-    a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Ouvrir WhatsApp';
+    a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = t('Ouvrir WhatsApp', 'Open WhatsApp');
     status.append(a);
   });
 }

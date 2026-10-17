@@ -2,13 +2,14 @@
 // puis le formulaire de contact est prérempli. Rien n'est envoyé ni enregistré.
 import { motionOK } from './util.js';
 import { saveHandoff } from './handoff.js';
+import { t } from './i18n.js';
 
 const PLANS = [
-  { key: 'landing', name: 'Landing Page', price: 'dès CHF 490', delay: '5–7 jours ouvrés',
-    why: 'Une page claire suffit pour présenter l’essentiel et être joignable rapidement.' },
-  { key: 'business', name: 'Site Business', price: 'CHF 790–990', delay: '10–15 jours ouvrés',
-    why: 'Plusieurs pages pour détailler vos services et inspirer confiance.' },
-  { key: 'signature', name: 'Signature', price: 'CHF 1’490–1’990', delay: '15–25 jours ouvrés',
+  { key: 'landing', name: 'Landing Page', price: t('dès CHF 490', 'from CHF 490'), delay: t('5–7 jours ouvrés', '5–7 working days'),
+    why: t('Une page claire suffit pour présenter l’essentiel et être joignable rapidement.', 'One clear page is enough to present the essentials and be easy to reach.') },
+  { key: 'business', name: t('Site Business', 'Business Site'), price: 'CHF 790–990', delay: t('10–15 jours ouvrés', '10–15 working days'),
+    why: t('Plusieurs pages pour détailler vos services et inspirer confiance.', 'Several pages to detail your services and earn trust.') },
+  { key: 'signature', name: 'Signature', price: 'CHF 1’490–1’990', delay: t('15–25 jours ouvrés', '15–25 working days'),
     why: 'Une direction artistique approfondie, pour une image qui vous distingue.' }
 ];
 
@@ -36,8 +37,8 @@ export function initQuiz() {
     bars.forEach((b, k) => b.classList.toggle('is-on', k <= i));
     prev.disabled = i === 0;
     next.disabled = !answered(i);
-    next.firstChild.textContent = i === steps.length - 1 ? 'Voir ma recommandation ' : 'Continuer ';
-    status.textContent = `Étape ${i + 1} sur ${steps.length}`;
+    next.firstChild.textContent = i === steps.length - 1 ? t('Voir ma recommandation ', 'See my recommendation ') : t('Continuer ', 'Continue ');
+    status.textContent = t(`Étape ${i + 1} sur ${steps.length}`, `Step ${i + 1} of ${steps.length}`);
     const legend = steps[i].querySelector('legend');
     if (document.activeElement && form.contains(document.activeElement)) legend?.focus({ preventScroll: true });
   }
@@ -57,14 +58,14 @@ export function initQuiz() {
     const plan = PLANS[level];
     const reasons = [plan.why];
     if (a.objectif?.value === 'reservation') {
-      reasons.push(level === 2 ? 'L’intégration d’un outil de réservation est incluse.' : 'Option conseillée : intégration d’un outil de réservation (dès CHF 150).');
+      reasons.push(level === 2 ? t('L’intégration d’un outil de réservation est incluse.', 'A booking tool integration is included.') : t('Option conseillée : intégration d’un outil de réservation (dès CHF 150).', 'Suggested option: booking tool integration (from CHF 150).'));
     }
-    if (a.objectif?.value === 'local') reasons.push('Option conseillée : optimisation de votre fiche Google Business Profile (dès CHF 190).');
-    if (a.contenu?.value === '') reasons.push('Le nombre de pages se précise ensemble, au devis.');
+    if (a.objectif?.value === 'local') reasons.push(t('Option conseillée : optimisation de votre fiche Google Business Profile (dès CHF 190).', 'Suggested option: Google Business Profile optimisation (from CHF 190).'));
+    if (a.contenu?.value === '') reasons.push(t('Le nombre de pages se précise ensemble, au devis.', 'We will settle the number of pages together in the quote.'));
     const when = a.calendrier?.value;
     reasons.push(when === 'plus' || when === 'libre'
-      ? `Délai indicatif : ${plan.delay}, à votre rythme.`
-      : `Délai indicatif : ${plan.delay} dès réception de vos contenus.`);
+      ? t(`Délai indicatif : ${plan.delay}, à votre rythme.`, `Typical timeline: ${plan.delay}, at your pace.`)
+      : t(`Délai indicatif : ${plan.delay} dès réception de vos contenus.`, `Typical timeline: ${plan.delay} once we have your content.`));
     return { plan, reasons };
   }
 
@@ -80,8 +81,8 @@ export function initQuiz() {
     nav.hidden = true;
     result.hidden = false;
     result.dataset.plan = plan.key;
-    result.dataset.summary = `Questionnaire : ${a.activite?.label} · ${a.objectif?.label} · ${a.contenu?.label} · ${a.calendrier?.label}.`;
-    result.dataset.summary += ` Formule conseillée : ${plan.name} (${plan.price}).`;
+    result.dataset.summary = `${t('Questionnaire :', 'Questionnaire:')} ${a.activite?.label} · ${a.objectif?.label} · ${a.contenu?.label} · ${a.calendrier?.label}.`;
+    result.dataset.summary += ` ${t('Formule conseillée :', 'Suggested plan:')} ${plan.name} (${plan.price}).`;
     result.focus({ preventScroll: true });
     if (motionOK()) result.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 500, easing: 'cubic-bezier(.2,.7,0,1)' });
   }
@@ -112,9 +113,9 @@ export function initQuiz() {
     saveHandoff({
       offer: result.dataset.plan,
       extra: '',
-      goal: obj === 'local' ? 'être mieux trouvé localement' : 'créer un site',
+      goal: obj === 'local' ? t('être mieux trouvé localement', 'be found more easily nearby') : t('créer un site', 'create a website'),
       quiz: result.dataset.summary,
-      notice: `Votre point de départ : ${form.querySelector('[data-quiz-plan]').textContent} · ${form.querySelector('[data-quiz-price]').textContent}.`
+      notice: `${t('Votre point de départ :', 'Your starting point:')} ${form.querySelector('[data-quiz-plan]').textContent} · ${form.querySelector('[data-quiz-price]').textContent}.`
     });
   });
 

@@ -131,7 +131,8 @@ function initMethodeAndTone() {
     }
     backdrop?.style.setProperty('--night-o', o.toFixed(3));
     let tone = o > 0.5 ? 'night' : '';
-    if (footer && footer.getBoundingClientRect().top + 140 < 72) tone = 'night';
+    const darkEnd = document.querySelector('.cta-band.tone-night') || footer;
+    if (darkEnd && darkEnd.getBoundingClientRect().top < 72) tone = 'night';
     if (tone !== lastTone) { lastTone = tone; if (tone) root.dataset.tone = tone; else delete root.dataset.tone; }
   });
 }

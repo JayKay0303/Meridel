@@ -2,10 +2,10 @@
 // s'il ne trouve pas sa cible sur la page courante.
 import { initNav } from './nav.js';
 import { initLine } from './line.js';
-import { initNameplay } from './atelier.js?v=20261017';
-import { initQuiz } from './quiz-atelier.js?v=20261017';
-import { initContact } from './contact-atelier.js?v=20261017';
-import { initGlobe } from './globe.js?v=20261017';
+import { initNameplay } from './atelier.js?v=20261017c';
+import { initQuiz } from './quiz-atelier.js?v=20261017c';
+import { initContact } from './contact-atelier.js?v=20261017c';
+import { initUi } from './ui.js?v=20261017c';
 import { initFx } from './fx.js';
 import { motionOK } from './util.js';
 
@@ -16,7 +16,7 @@ const run = (fn) => { try { fn(); } catch (err) { console.error(err); } };
 
 run(initNav);
 run(initFx);
-run(initGlobe);
+run(initUi);
 run(initNameplay);
 run(initQuiz);
 run(initContact);
