@@ -54,7 +54,7 @@ export function initContact() {
   }
 
   const fields = {
-    name: { el: form.querySelector('#f-name'), err: form.querySelector('#err-name'), ok: (v) => (form.dataset.quizContact === 'true' && !v) || v.length >= 2 },
+    name: { el: form.querySelector('#f-name'), err: form.querySelector('#err-name'), ok: (v) => v.length >= 2 },
     company: { el: form.querySelector('#f-company'), err: form.querySelector('#err-company'), ok: (v) => v.length >= 2 },
     reply: { el: form.querySelector('#f-reply'), err: form.querySelector('#err-reply'), ok: (v) => EMAIL_RE.test(v) || isPhone(v) }
   };
@@ -83,7 +83,7 @@ export function initContact() {
     }
     const v = (id) => (form.querySelector(id)?.value || '').trim();
     const name = v('#f-name'); const company = v('#f-company'); const city = v('#f-city');
-    const phrase = `${name ? `Je m’appelle ${name}, je dirige` : 'Je représente'} ${company}${city ? ` à ${city}` : ''}. J’aimerais ${v('#f-goal')} et l’offre qui m’intéresse est ${v('#f-offer')}. Vous pouvez me répondre à ${v('#f-reply')}.`;
+    const phrase = `Je m’appelle ${name}, je dirige ${company}${city ? ` à ${city}` : ''}. J’aimerais ${v('#f-goal')} et l’offre qui m’intéresse est ${v('#f-offer')}. Vous pouvez me répondre à ${v('#f-reply')}.`;
     const extra = [v('#f-more'), ...(form.dataset.quizSummary && !v('#f-more').includes(form.dataset.quizSummary) ? [form.dataset.quizSummary] : [])].filter(Boolean).join('\n\n');
     const message = ['Bonjour,', '', phrase, ...(extra ? ['', extra] : []), '', 'Bien cordialement,', name].join('\n');
     const via = e.submitter?.value || 'whatsapp';

@@ -124,17 +124,14 @@ export function initQuiz() {
     contact.dataset.quizContact = 'true';
     contact.dataset.quizSummary = result.dataset.summary;
     const name = contact.querySelector('#f-name');
-    name.required = false;
-    name.setAttribute('aria-invalid', 'false');
-    contact.querySelector('#err-name').hidden = true;
-    if (!name.value.trim()) contact.querySelector('[data-contact-name]').hidden = true;
     const notice = contact.querySelector('[data-contact-recommendation]');
-    notice.textContent = `Votre point de départ : ${form.querySelector('[data-quiz-plan]').textContent} · ${form.querySelector('[data-quiz-price]').textContent}. Complétez votre entreprise, votre ville et un moyen de vous joindre.`;
+    notice.textContent = `Votre point de départ : ${form.querySelector('[data-quiz-plan]').textContent} · ${form.querySelector('[data-quiz-price]').textContent}.`;
     notice.hidden = false;
     const company = contact.querySelector('#f-company');
     const logoName = document.querySelector('[data-np-input]')?.value.trim();
     if (!company.value.trim() && logoName) { company.value = logoName; company.dispatchEvent(new Event('input')); }
-    setTimeout(() => company?.focus({ preventScroll: true }), 700);
+    const first = !name.value.trim() ? name : !company.value.trim() ? company : contact.querySelector('#f-city') || company;
+    setTimeout(() => first?.focus({ preventScroll: true }), 700);
   });
 
   // « Voir le détail des offres » : met en évidence la formule recommandée.

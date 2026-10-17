@@ -29,7 +29,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20260928-atelier1"><link rel="stylesheet" href="css/atelier.css?v=20260928-atelier1">
+<link rel="stylesheet" href="css/site.css?v=20260928-atelier2"><link rel="stylesheet" href="css/atelier.css?v=20260928-atelier2">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {
@@ -54,7 +54,7 @@
 }
 </script>
 <script defer src="config.js?v=2"></script>
-<script type="module" src="js/main-atelier.js?v=20260928-atelier1"></script>
+<script type="module" src="js/main-atelier.js?v=20260928-atelier2"></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -205,7 +205,7 @@
     <input class="np__input" id="np-input" maxlength="40" autocomplete="organization" placeholder="Votre entreprise" data-np-input>
     <fieldset class="atelier__group"><legend>01 / Une voix</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-font" value="classique" checked><span>Classique</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="contemporain" ><span>Contemporain</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="audacieux" ><span>Audacieux</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="naturel" ><span>Naturel</span></label></div></fieldset>
     <fieldset class="atelier__group"><legend>02 / Une couleur</legend><div class="atelier__colors"><label class="atelier__swatch" style="--swatch:#111A22"><input type="radio" name="logo-color" value="encre" checked><span aria-hidden="true"></span><span class="vh">Encre</span></label><label class="atelier__swatch" style="--swatch:#1F4E5A"><input type="radio" name="logo-color" value="leman" ><span aria-hidden="true"></span><span class="vh">Léman</span></label><label class="atelier__swatch" style="--swatch:#9B4327"><input type="radio" name="logo-color" value="terre" ><span aria-hidden="true"></span><span class="vh">Terre cuite</span></label><label class="atelier__swatch" style="--swatch:#365743"><input type="radio" name="logo-color" value="foret" ><span aria-hidden="true"></span><span class="vh">Forêt</span></label><label class="atelier__swatch" style="--swatch:#67415C"><input type="radio" name="logo-color" value="prune" ><span aria-hidden="true"></span><span class="vh">Prune</span></label><label class="atelier__swatch" style="--swatch:#304F9B"><input type="radio" name="logo-color" value="cobalt" ><span aria-hidden="true"></span><span class="vh">Cobalt</span></label><span class="micro" data-color-name>Encre</span></div></fieldset>
-    <fieldset class="atelier__group"><legend>03 / Un signe distinctif</legend><div class="atelier__choices atelier__symbols"><label class="atelier__choice"><input type="radio" name="logo-symbol" value="none" checked><span>Aucun</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="monogram" ><span>Initiales</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="leaf" ><span>Feuille</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="sun" ><span>Soleil</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="spark" ><span>Éclat</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="arch" ><span>Arche</span></label><label class="atelier__choice"><input type="radio" name="logo-symbol" value="peak" ><span>Sommet</span></label></div></fieldset>
+    <fieldset class="atelier__group"><legend>03 / Un signe tiré de votre nom</legend><div class="atelier__marks"><label class="atelier__mark"><input type="radio" name="logo-symbol" value="none" checked><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false"><path d="M14 50L50 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg><small>Aucun</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="monogram"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="monogram"></svg><small>Initiales</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="sceau"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="sceau"></svg><small>Sceau</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="taille"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="taille"></svg><small>Taille</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="entrelacs"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="entrelacs"></svg><small>Entrelacs</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="rythme"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="rythme"></svg><small>Rythme</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="trace"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="trace"></svg><small>Tracé</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="ecusson"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="ecusson"></svg><small>Écusson</small></span></label></div><button class="atelier__variants link-draw" type="button" data-variants>Autres variantes <span aria-hidden="true">↻</span></button></fieldset>
     <details class="atelier__details"><summary>Affiner la composition <span aria-hidden="true">+</span></summary>
      <fieldset class="atelier__group"><legend>Disposition</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-layout" value="inline" checked><span>En ligne</span></label><label class="atelier__choice"><input type="radio" name="logo-layout" value="stack" ><span>Empilée</span></label></div></fieldset>
      <label class="atelier__range" for="logo-spacing">Espacement <input id="logo-spacing" type="range" min="0" max="5" step="0.5" value="0"></label>
@@ -451,7 +451,7 @@
               <div class="extra"><dt>Brand lite : palette, typos &amp; mot-symbole</dt><dd>dès CHF 290</dd></div>
               <div class="extra"><dt>Google Business Profile : optimisation initiale</dt><dd>dès CHF 190</dd></div>
               <div class="extra"><dt>Intégration d’un outil de réservation</dt><dd>dès CHF 150</dd></div>
-              <div class="extra"><dt>Langue EN ou PT supplémentaire</dt><dd>sur devis</dd></div>
+              <div class="extra"><dt>Langue supplémentaire</dt><dd>sur devis</dd></div>
             </dl>
             <p class="note">Brand lite : une piste créative et une série de retours. Traductions, abonnements aux outils tiers et vérification de marque non inclus. L’optimisation Google nécessite votre accès autorisé à une fiche éligible.</p>
             <a class="link-draw" href="#contact" data-offer="surmesure">Demander une proposition sur mesure <span aria-hidden="true">→</span></a>
@@ -486,7 +486,7 @@
       <div class="faq">
         <details class="acc">
           <summary class="acc__sum"><span>Quels contenus dois-je préparer, et en combien de temps est-ce prêt ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Les délais figurent dans les offres et sont confirmés au devis. Ils démarrent à réception des textes, images et de l’acompte. Une langue est incluse ; EN et PT peuvent être ajoutés sur devis. La rédaction peut aussi être déléguée en option.</p></div>
+          <div class="acc__body"><p>Les délais figurent dans les offres et sont confirmés au devis. Ils démarrent à réception des textes, images et de l’acompte. Une langue est incluse ; d’autres langues peuvent être ajoutées sur devis. La rédaction peut aussi être déléguée en option.</p></div>
         </details>
         <details class="acc">
           <summary class="acc__sum"><span>Comment se passent les retours et le paiement ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
@@ -506,7 +506,7 @@
         </details>
         <details class="acc">
           <summary class="acc__sum"><span>Le site peut-il être en plusieurs langues ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Une langue est incluse (FR). L’anglais ou le portugais peuvent être ajoutés sur devis.</p></div>
+          <div class="acc__body"><p>Oui. Une langue est incluse (FR), et d’autres langues peuvent être ajoutées sur devis.</p></div>
         </details>
       </div>
     </div>

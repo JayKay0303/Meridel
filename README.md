@@ -23,7 +23,7 @@ Le dépôt contient la version publiée d’origine et les améliorations de l�
 ## Fichiers de cette évolution
 
 - `css/atelier.css` : styles limités aux deux sections et à leur passage au contact.
-- `js/atelier.js` : typographie, palettes, symboles, composition et scènes.
+- `js/atelier.js` : typographie, palettes, signes dessinés à partir du nom (initiales, sceau, taille, entrelacs, rythme, tracé, écusson), composition et scènes. Même nom + même variante = même dessin ; « Autres variantes » change la graine.
 - `js/quiz-atelier.js` : navigation en quatre étapes et transfert de la recommandation.
 - `js/contact-atelier.js` : contact simplifié après le questionnaire.
 - `js/main-atelier.js` : point d’entrée de cette version ; les autres modules restent inchangés.
@@ -38,3 +38,11 @@ Le formulaire prépare un message WhatsApp ou un e-mail. Le visiteur confirme l�
 - Typographie, couleur, symbole, carte recto/verso, enseigne et mobile.
 - Nom long avec accents ; largeur de téléphone 390 px sans débordement horizontal.
 - Vérification des ressources locales et absence d’erreurs JavaScript pendant les parcours testés.
+
+## Évolution du 29 septembre 2026
+
+- Atelier : les pictogrammes génériques (feuille, soleil…) sont remplacés par des signes calculés à partir des lettres du nom, présentés en vignettes. Tout est dessiné dans le navigateur, sans service externe.
+- Téléphone : l'aperçu se place juste sous le champ du nom, avant les réglages.
+- Contact : le nom redevient obligatoire après le questionnaire ; l'encadré de recommandation est réduit à une ligne.
+- Langues : plus de mention « EN / PT » ; d'autres langues peuvent être ajoutées sur devis.
+- Version des fichiers : `?v=20260928-atelier2`.

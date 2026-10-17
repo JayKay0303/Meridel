@@ -1,9 +1,9 @@
 // Point d'entrée : chaque module est indépendant et se désactive proprement s'il manque sa cible.
 import { initNav } from './nav.js';
 import { initLine } from './line.js';
-import { initNameplay } from './atelier.js?v=20260928-atelier1';
-import { initQuiz } from './quiz-atelier.js?v=20260928-atelier1';
-import { initContact } from './contact-atelier.js?v=20260928-atelier1';
+import { initNameplay } from './atelier.js?v=20260928-atelier2';
+import { initQuiz } from './quiz-atelier.js?v=20260928-atelier2';
+import { initContact } from './contact-atelier.js?v=20260928-atelier2';
 import { initFx } from './fx.js';
 import { motionOK } from './util.js';
 

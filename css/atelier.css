@@ -19,3 +19,43 @@
 
 .atelier__phone-body strong{max-height:none;overflow:visible;font-size:21px;line-height:1.15}
 
+
+/* Signes tirés du nom : vignettes dessinées pour le nom saisi */
+.atelier__marks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.atelier__mark{position:relative;cursor:pointer;min-width:0}
+.atelier__mark input{position:absolute;width:1px;height:1px;opacity:0}
+.atelier__mark>span{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px 8px;border:1px solid var(--rule-strong);border-radius:10px;color:var(--brand);background:rgba(255,255,255,.25);transition:border-color .2s,background .2s}
+.atelier__mark svg{width:100%;max-width:46px;aspect-ratio:1;display:block;overflow:visible}
+.atelier__mark small{font-size:11px;line-height:1.2;color:var(--fg-2);text-align:center;overflow-wrap:anywhere}
+.atelier__mark:hover>span{border-color:var(--fg)}
+.atelier__mark input:checked+span{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:var(--paper)}
+.atelier__mark input:checked+span small{color:var(--ink)}
+.atelier__mark input:focus-visible+span{outline:2px solid var(--ember);outline-offset:3px}
+.atelier__variants{margin-top:12px;min-height:40px;font-size:14px}
+
+/* Téléphone : l'aperçu se place juste sous le nom, puis les réglages */
+@media(max-width:650px){
+  .atelier{gap:0}
+  .atelier__controls{display:contents}
+  .atelier__controls>.np__label{order:1}
+  .atelier__controls>.np__input{order:2}
+  .atelier__preview{order:3;margin:18px 0 4px}
+  .atelier__controls>.atelier__group,.atelier__controls>.atelier__details,.atelier__controls>.atelier__inspire{order:4}
+  .atelier__canvas{height:270px;padding:12px}
+  .atelier__views{padding:8px}
+  .atelier__views .atelier__choice span{min-height:38px;padding:6px}
+  .atelier__signature,.atelier__hint{display:none}
+  .atelier__shop{width:min(92%,330px)}
+  .atelier__sign svg{max-height:70px}
+  .atelier__awning{height:24px}
+  .atelier__facade{height:100px;padding-top:10px}
+  .atelier__phone{height:250px;width:160px;border-radius:24px}
+  .atelier__phone-body{padding:10px 12px}
+  .atelier__phone-body strong{font-size:19px;margin:8px 0 6px}
+  .atelier__phone-art{display:none}
+  .atelier__footer{min-height:44px;padding:6px 14px}
+  .atelier__marks{gap:6px}
+  .atelier__mark>span{padding:8px 2px 6px}
+  .atelier__mark svg{max-width:38px}
+}
+@media(prefers-reduced-motion:reduce){.atelier__mark>span{transition:none}}
