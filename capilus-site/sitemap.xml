@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://capilus.ch/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/"/></url>
+  <url><loc>https://capilus.ch/prestations/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/prestations/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/services/"/></url>
+  <url><loc>https://capilus.ch/lissage-au-tanin/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/lissage-au-tanin/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/tannin-straightening/"/></url>
+  <url><loc>https://capilus.ch/avis/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/avis/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/reviews/"/></url>
+  <url><loc>https://capilus.ch/contact/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/contact/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/contact/"/></url>
+  <url><loc>https://capilus.ch/mentions-legales/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/mentions-legales/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/legal-notice/"/></url>
+  <url><loc>https://capilus.ch/confidentialite/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/confidentialite/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/privacy/"/></url>
+  <url><loc>https://capilus.ch/en/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/"/></url>
+  <url><loc>https://capilus.ch/en/services/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/prestations/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/services/"/></url>
+  <url><loc>https://capilus.ch/en/tannin-straightening/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/lissage-au-tanin/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/tannin-straightening/"/></url>
+  <url><loc>https://capilus.ch/en/reviews/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/avis/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/reviews/"/></url>
+  <url><loc>https://capilus.ch/en/contact/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/contact/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/contact/"/></url>
+  <url><loc>https://capilus.ch/en/legal-notice/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/mentions-legales/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/legal-notice/"/></url>
+  <url><loc>https://capilus.ch/en/privacy/</loc><xhtml:link rel="alternate" hreflang="fr-CH" href="https://capilus.ch/confidentialite/"/><xhtml:link rel="alternate" hreflang="en" href="https://capilus.ch/en/privacy/"/></url>
+</urlset>
