@@ -1,6 +1,7 @@
 // « Votre projet en 30 secondes » : 4 questions → une formule recommandée,
 // puis le formulaire de contact est prérempli. Rien n'est envoyé ni enregistré.
 import { motionOK } from './util.js';
+import { saveHandoff } from './handoff.js';
 
 const PLANS = [
   { key: 'landing', name: 'Landing Page', price: 'dès CHF 490', delay: '5–7 jours ouvrés',
@@ -22,7 +23,6 @@ export function initQuiz() {
   const status = form.querySelector('[data-quiz-status]');
   const result = form.querySelector('[data-quiz-result]');
   let current = 0;
-  let previousSummary = '';
   form.addEventListener('submit', (e) => e.preventDefault());
 
   const answered = (i) => !!steps[i].querySelector('input:checked');
@@ -106,32 +106,16 @@ export function initQuiz() {
     steps[0].querySelector('legend').focus({ preventScroll: true });
   });
 
-  // « Parlons de cette formule » : préremplit la phrase de contact.
+  // « Continuer vers le contact » : la recommandation suit le visiteur jusqu'à la page Contact.
   form.querySelector('[data-quiz-cta]').addEventListener('click', () => {
-    const contact = document.querySelector('[data-contact]');
-    const select = contact?.querySelector('[data-offer-select]');
-    const opt = select?.querySelector(`option[data-key="${result.dataset.plan}"]`);
-    if (opt) { select.value = opt.value; select.dispatchEvent(new Event('input')); }
-    const goal = contact?.querySelector('#f-goal');
     const obj = answers().objectif?.value;
-    if (goal) goal.value = obj === 'local' ? 'être mieux trouvé localement' : 'créer un site';
-    const more = contact?.querySelector('#f-more');
-    if (more) {
-      const kept = previousSummary ? more.value.replace(previousSummary, '').trim() : more.value.trim();
-      const combined = [kept, result.dataset.summary].filter(Boolean).join('\n\n');
-      if (combined.length <= more.maxLength) { more.value = combined; previousSummary = result.dataset.summary; }
-    }
-    contact.dataset.quizContact = 'true';
-    contact.dataset.quizSummary = result.dataset.summary;
-    const name = contact.querySelector('#f-name');
-    const notice = contact.querySelector('[data-contact-recommendation]');
-    notice.textContent = `Votre point de départ : ${form.querySelector('[data-quiz-plan]').textContent} · ${form.querySelector('[data-quiz-price]').textContent}.`;
-    notice.hidden = false;
-    const company = contact.querySelector('#f-company');
-    const logoName = document.querySelector('[data-np-input]')?.value.trim();
-    if (!company.value.trim() && logoName) { company.value = logoName; company.dispatchEvent(new Event('input')); }
-    const first = !name.value.trim() ? name : !company.value.trim() ? company : contact.querySelector('#f-city') || company;
-    setTimeout(() => first?.focus({ preventScroll: true }), 700);
+    saveHandoff({
+      offer: result.dataset.plan,
+      extra: '',
+      goal: obj === 'local' ? 'être mieux trouvé localement' : 'créer un site',
+      quiz: result.dataset.summary,
+      notice: `Votre point de départ : ${form.querySelector('[data-quiz-plan]').textContent} · ${form.querySelector('[data-quiz-price]').textContent}.`
+    });
   });
 
   // « Voir le détail des offres » : met en évidence la formule recommandée.

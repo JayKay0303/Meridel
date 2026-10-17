@@ -1,3 +1,5 @@
+import { saveHandoff } from './handoff.js';
+
 // Atelier d'identité : typographie, couleur et signe distinctif dessiné à partir du nom saisi.
 // Le texte saisi est toujours inséré via textContent. Rien n'est envoyé ni enregistré.
 const NS = 'http://www.w3.org/2000/svg';
@@ -277,18 +279,11 @@ export function initNameplay() {
   });
   root.querySelector('[data-logo-reset]').addEventListener('click', () => { Object.assign(state, defaults); sync(); });
 
-  let previous = '';
-  document.querySelector('[data-logo-contact]').addEventListener('click', () => {
-    const company = document.querySelector('#f-company');
-    const more = document.querySelector('#f-more');
-    if (!company.value.trim() && clean(input.value)) { company.value = clean(input.value); company.dispatchEvent(new Event('input')); }
+  // « Partir de cette idée » : la piste choisie suit le visiteur jusqu'à la page Contact.
+  document.querySelector('[data-logo-contact]')?.addEventListener('click', () => {
     const sign = state.symbol === 'none' ? 'sans signe' : `signe ${SYMBOLS[state.symbol]} (variante ${state.seed})`;
     const summary = `Piste d’identité : ${name()} · ${FONTS[state.font][2]} · ${COLORS[state.color][1]} · ${sign} · ${state.layout === 'stack' ? 'empilée' : 'en ligne'}.`;
-    if (more) {
-      const existing = previous ? more.value.replace(previous, '').trim() : more.value.trim();
-      const combined = [existing, summary].filter(Boolean).join('\n\n');
-      if (combined.length <= more.maxLength) { more.value = combined; previous = summary; }
-    }
+    saveHandoff({ logo: summary, ...(clean(input.value) ? { company: clean(input.value) } : {}) });
   });
 
   render();

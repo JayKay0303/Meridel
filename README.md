@@ -46,3 +46,20 @@ Le formulaire prépare un message WhatsApp ou un e-mail. Le visiteur confirme l�
 - Contact : le nom redevient obligatoire après le questionnaire ; l'encadré de recommandation est réduit à une ligne.
 - Langues : plus de mention « EN / PT » ; d'autres langues peuvent être ajoutées sur devis.
 - Version des fichiers : `?v=20260928-atelier2`.
+
+## Version multi-pages (17 octobre 2026)
+
+Le site n’est plus sur une seule page :
+
+| Page | Contenu |
+|---|---|
+| `index.html` | Accueil : qui, quoi, formules résumées, qui sommes-nous, contact. Globe décoratif (`js/globe.js`). Les anciennes adresses `#offres`, `#contact`… redirigent vers la bonne page. |
+| `offres.html` | Les 3 formules, maintenance, options, questionnaire « Pas sûr de la formule ? », FAQ. |
+| `studio.html` | Présentation, « Pourquoi Méridel », approche, méthode. |
+| `atelier.html` | Atelier d’identité. |
+| `contact.html` | Formulaire en forme de phrase. Prérempli par les offres, le questionnaire et l’atelier (`js/handoff.js`, sessionStorage de l’onglet, rien n’est envoyé). |
+
+- Point d’entrée JavaScript commun : `js/site.js` (les anciens `main.js` / `main-atelier.js` restent pour les visiteurs ayant une ancienne page ouverte).
+- Styles des nouvelles pages : `css/pages.css`.
+- Texte : espaces insécables après les mots courts (à, le, la, de, un…) et avant « : ; ? ! » ; un mot court ne doit jamais finir seul en bout de ligne. `js/fx.js` ne coupe plus les titres sur les espaces insécables.
+- Publication : envoyer d’abord `css/`, `js/`, puis les nouvelles pages, et `index.html` en dernier.

@@ -8,11 +8,13 @@ function splitWords(el) {
   while (walker.nextNode()) nodes.push(walker.currentNode);
   let i = 0;
   nodes.forEach((node) => {
-    const parts = node.textContent.split(/(\s+)/);
+    // Coupure uniquement sur les espaces ordinaires : les espaces insécables (après « à », « le »…)
+    // restent à l'intérieur du mot, pour qu'un mot court ne finisse jamais seul en bout de ligne.
+    const parts = node.textContent.split(/([ \t\n\r]+)/);
     const frag = document.createDocumentFragment();
     parts.forEach((part) => {
       if (!part) return;
-      if (/^\s+$/.test(part)) { frag.append(document.createTextNode(part)); return; }
+      if (/^[ \t\n\r]+$/.test(part)) { frag.append(document.createTextNode(part)); return; }
       const span = document.createElement('span');
       span.className = 'w';
       span.style.setProperty('--i', i++);

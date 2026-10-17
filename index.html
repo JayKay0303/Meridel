@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Méridel — Création de sites web pour PME en Suisse romande</title>
-<meta name="description" content="Méridel, studio web en Suisse romande : des sites clairs, rapides et soignés pour PME et indépendants. Dès CHF 490, devis clair et sans engagement.">
+<title>Méridel — Création de sites web à Genève et en Suisse romande</title>
+<meta name="description" content="Méridel, studio web à Genève : des sites clairs, rapides et à votre image pour entreprises et indépendants de Suisse romande. Dès CHF 490, devis clair et sans engagement.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://meridel.ch/">
 <meta name="theme-color" content="#F5F1EA">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="fr_CH">
 <meta property="og:site_name" content="Méridel">
 <meta property="og:title" content="Méridel — La ligne juste.">
-<meta property="og:description" content="Des sites dessinés au détail près, rapides et limpides, pour les entreprises de Suisse romande.">
+<meta property="og:description" content="Méridel, studio web à Genève : des sites clairs, rapides et à votre image pour entreprises et indépendants de Suisse romande. Dès CHF 490, devis clair et sans engagement.">
 <meta property="og:url" content="https://meridel.ch/">
 <meta property="og:image" content="https://meridel.ch/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Méridel — La ligne juste.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Méridel — La ligne juste.">
-<meta name="twitter:description" content="Des sites dessinés au détail près, rapides et limpides, pour les entreprises de Suisse romande.">
+<meta name="twitter:description" content="Méridel, studio web à Genève : des sites clairs, rapides et à votre image pour entreprises et indépendants de Suisse romande. Dès CHF 490, devis clair et sans engagement.">
 <meta name="twitter:image" content="https://meridel.ch/img/og.png">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
@@ -29,8 +29,20 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=20260928-atelier2"><link rel="stylesheet" href="css/atelier.css?v=20260928-atelier2">
+<link rel="stylesheet" href="css/site.css?v=20261017">
+<link rel="stylesheet" href="css/atelier.css?v=20261017">
+<link rel="stylesheet" href="css/pages.css?v=20261017">
 <script>document.documentElement.classList.add('js')</script>
+<script>
+/* Anciennes adresses (site sur une seule page) : on renvoie vers la bonne page. */
+(function () {
+  var map = { '#offres': 'offres.html', '#projet': 'offres.html#projet', '#questions': 'offres.html#questions',
+    '#contact': 'contact.html', '#approche': 'studio.html#approche', '#methode': 'studio.html#methode',
+    '#apropos': 'studio.html', '#votre-nom': 'atelier.html' };
+  var to = map[location.hash];
+  if (to) location.replace(to);
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,10 +66,10 @@
 }
 </script>
 <script defer src="config.js?v=2"></script>
-<script type="module" src="js/main-atelier.js?v=20260928-atelier2"></script>
+<script type="module" src="js/site.js?v=20261017"></script>
 </head>
-<body>
-<a class="skip" href="#main">Aller au contenu</a>
+<body class="page-home">
+<a class="skip" href="#main">Aller au contenu</a>
 
 <div class="backdrop" aria-hidden="true"><div class="backdrop__night"></div></div>
 <div class="grain" aria-hidden="true"></div>
@@ -65,18 +77,17 @@
 
 <header class="site-header" data-header>
   <div class="site-header__inner">
-    <a class="logo" href="#top" aria-label="Méridel, retour en haut de page">
+    <a class="logo" href="./" aria-label="Méridel, accueil">
       <svg class="logo__svg" viewBox="-204 -1975 6064 2535" aria-hidden="true" focusable="false"><use href="img/logo.svg#meridel" x="-204" y="-1975" width="6064" height="2535"/></svg>
     </a>
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <ul class="nav__list" role="list">
-        <li><a class="nav__link" href="#approche">Approche</a></li>
-        <li><a class="nav__link" href="#offres">Offres</a></li>
-        <li><a class="nav__link" href="#methode">Méthode</a></li>
-        <li><a class="nav__link" href="#questions">Questions</a></li>
-        <li><a class="nav__link" href="#contact">Contact</a></li>
+        <li><a class="nav__link" href="./" aria-current="page">Accueil</a></li>
+        <li><a class="nav__link" href="offres.html">Offres</a></li>
+        <li><a class="nav__link" href="studio.html">Studio</a></li>
+        <li><a class="nav__link" href="atelier.html">Atelier</a></li>
       </ul>
-      <a class="btn btn--primary btn--sm nav__cta" href="#contact" data-magnetic>Parlons-en</a>
+      <a class="btn btn--primary btn--sm nav__cta" href="contact.html" data-magnetic>Parlons-en</a>
     </nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" data-menu-toggle>
       <span class="menu-toggle__label">Menu</span>
@@ -86,493 +97,116 @@
 </header>
 
 <main id="main" tabindex="-1">
-
-  <!-- 1 · Hero -->
-  <section class="hero" id="top" data-hero>
-    <div class="wrap hero__inner">
-      <p class="overline">Studio web · Suisse romande</p>
-      <h1 class="hero__title" data-hero-title>
-        <span class="hero__line">On vous juge en un regard.</span>
-        <span class="hero__line hero__line--2">Faisons en sorte qu’il soit <span class="hero__mark" data-line-start>le bon.</span></span>
-      </h1>
-      <div class="hero__foot">
-        <p class="hero__lead">Des sites dessinés au détail près, rapides et limpides, pour les entreprises de Suisse romande qui veulent une présence à la hauteur de leur savoir-faire.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#contact" data-magnetic data-hero-cta>Parlons de votre projet <span class="btn__arrow" aria-hidden="true">→</span></a>
-          <a class="link-draw" href="#projet">Votre projet en 30 secondes <span aria-hidden="true">↓</span></a>
+  <!-- 1 · Qui, quoi, où -->
+  <section class="hero hero--home" id="top" data-hero>
+    <div class="wrap hero__inner home-hero">
+      <div class="home-hero__text">
+        <p class="overline">Studio web · Suisse romande</p>
+        <h1 class="hero__title home-hero__title">
+          <span class="hero__line">Des sites web clairs, rapides</span>
+          <span class="hero__line hero__line--2">et <span class="hero__mark" data-line-start>à votre image.</span></span>
+        </h1>
+        <p class="hero__lead">Méridel crée et refait les sites des entreprises et indépendants de Suisse romande. Un seul interlocuteur, un prix annoncé dès le départ, un site en ligne en quelques semaines.</p>
+        <div class="hero__actions home-hero__actions">
+          <a class="btn btn--primary" href="contact.html" data-magnetic data-hero-cta>Parlons de votre projet <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="link-draw" href="offres.html">Voir les offres <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <div class="hero__meta">
-        <p class="micro">Sites dès CHF 490 · Devis clair, sans engagement</p>
+      <figure class="globe" aria-hidden="true">
+        <canvas class="globe__canvas" data-globe></canvas>
+        <figcaption class="globe__cap">Genève · 46.20° N · 6.14° E</figcaption>
+      </figure>
+      <div class="hero__meta home-hero__meta">
+        <p class="micro">Sites dès CHF 490 · Devis clair, sans engagement · Réponse sous 1 jour ouvré</p>
       </div>
     </div>
   </section>
 
-  <!-- 2 · Approche -->
-  <section class="section approche" id="approche">
+  <!-- 2 · Ce que nous faisons -->
+  <section class="section home-do" id="services" aria-labelledby="do-title">
     <div class="wrap">
-      <p class="overline">Approche</p>
-      <h2 class="h2 approche__title" data-words data-line-anchor="right">Un site, c’est votre première poignée de main.</h2>
-      <ol class="principles" role="list">
-        <li class="principle">
-          <span class="principle__num" aria-hidden="true">01</span>
-          <h3 class="principle__title" data-words>Clarté</h3>
-          <p class="principle__text">Vos clients comprennent en quelques secondes ce que vous faites et comment vous joindre.</p>
+      <p class="overline">Ce que nous faisons</p>
+      <h2 class="h2" id="do-title" data-words data-line-anchor="right">Votre site, de l’idée à la mise en ligne.</h2>
+      <ol class="do-list" role="list">
+        <li class="do">
+          <span class="do__num" aria-hidden="true">01</span>
+          <h3 class="do__title">Créer</h3>
+          <p class="do__text">Un nouveau site, pensé d’abord pour le téléphone, qui dit en quelques secondes ce que vous faites et comment vous joindre.</p>
         </li>
-        <li class="principle">
-          <span class="principle__num" aria-hidden="true">02</span>
-          <h3 class="principle__title" data-words>Vitesse</h3>
-          <p class="principle__text">Un site léger, qui s’affiche instantanément, même sur un téléphone en 4G.</p>
+        <li class="do">
+          <span class="do__num" aria-hidden="true">02</span>
+          <h3 class="do__title">Refaire</h3>
+          <p class="do__text">Votre site est lent, daté ou difficile à lire sur mobile ? On garde ce qui fonctionne et on reconstruit le reste.</p>
         </li>
-        <li class="principle">
-          <span class="principle__num" aria-hidden="true">03</span>
-          <h3 class="principle__title" data-words>Confiance</h3>
-          <p class="principle__text">Un design soigné qui dit, avant même qu’on vous lise : ici, on travaille bien.</p>
+        <li class="do">
+          <span class="do__num" aria-hidden="true">03</span>
+          <h3 class="do__title">Entretenir</h3>
+          <p class="do__text">Mises à jour, sauvegardes, petites modifications : votre site reste en forme, sans que vous ayez à y penser.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- 4 · Services -->
-  <section class="section services" id="services" aria-labelledby="services-title">
+  <!-- 3 · Nos formules -->
+  <section class="section home-plans" id="formules" aria-labelledby="plans-title">
     <div class="wrap">
-      <p class="overline">Services</p>
-      <h2 class="h2" id="services-title" data-words data-line-anchor="right">Ce que nous faisons, concrètement.</h2>
-      <div class="svc" data-services>
-        <h3 class="svc__head svc__head--1">
-          <button class="svc__btn" type="button" aria-expanded="true" aria-controls="svc-1" id="svc-btn-1">
-            <span class="svc__num" aria-hidden="true">01</span>
-            <span class="svc__name">Création &amp; refonte</span>
-            <span class="svc__icon" aria-hidden="true"></span>
-          </button>
-        </h3>
-        <div class="svc__panel svc__panel--1" id="svc-1" role="region" aria-labelledby="svc-btn-1">
-          <p class="svc__desc">Landing page ou site vitrine : une présence claire, rapide et fidèle à votre identité.</p>
-          <ul class="ticks" role="list">
-            <li>Landing page d’une page ou site jusqu’à 8 pages</li>
-            <li>Refonte d’un site existant : on garde ce qui fonctionne</li>
-            <li>Design personnalisé, pensé d’abord pour le mobile</li>
-            <li>Titres et métadonnées essentiels</li>
-          </ul>
-          <a class="link-draw" href="#offres">Voir les offres <span aria-hidden="true">→</span></a>
-        </div>
+      <p class="overline">Nos formules</p>
+      <h2 class="h2" id="plans-title" data-words data-line-anchor="left">Trois formules. Un prix annoncé.</h2>
+      <ul class="mini-plans" role="list">
+        <li>
+          <a class="mini-plan" href="offres.html#landing">
+            <span class="mini-plan__name">Landing Page</span>
+            <span class="mini-plan__desc">Une page claire pour présenter l’essentiel.</span>
+            <span class="mini-plan__price"><small>dès</small> CHF 490</span>
+            <span class="mini-plan__go" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="mini-plan mini-plan--featured" href="offres.html#business">
+            <span class="mini-plan__badge">Présence complète</span>
+            <span class="mini-plan__name">Site Business</span>
+            <span class="mini-plan__desc">Jusqu’à 5 pages pour présenter vos services.</span>
+            <span class="mini-plan__price">CHF 790–990</span>
+            <span class="mini-plan__go" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="mini-plan" href="offres.html#signature">
+            <span class="mini-plan__name">Signature</span>
+            <span class="mini-plan__desc">Jusqu’à 8 pages et une direction artistique sur mesure.</span>
+            <span class="mini-plan__price">CHF 1’490–1’990</span>
+            <span class="mini-plan__go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+      <p class="home-plans__more">Paiement unique, maintenance facultative dès CHF 99 / mois. <a class="link-draw" href="offres.html">Voir le détail des offres <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
 
-        <h3 class="svc__head svc__head--2">
-          <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-2" id="svc-btn-2">
-            <span class="svc__num" aria-hidden="true">02</span>
-            <span class="svc__name">Visibilité locale</span>
-            <span class="svc__icon" aria-hidden="true"></span>
-          </button>
-        </h3>
-        <div class="svc__panel svc__panel--2" id="svc-2" role="region" aria-labelledby="svc-btn-2" hidden>
-          <p class="svc__desc">Des bases SEO solides et une fiche Google Business Profile optimisée pour être trouvé près de chez vous.</p>
-          <ul class="ticks" role="list">
-            <li>Structure des pages, titres et indexation technique</li>
-            <li>Optimisation initiale de la fiche Google Business Profile</li>
-            <li>Revue régulière du SEO local, avec la maintenance</li>
-          </ul>
-          <a class="link-draw" href="#offres">Voir les offres <span aria-hidden="true">→</span></a>
-        </div>
-
-        <h3 class="svc__head svc__head--3">
-          <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-3" id="svc-btn-3">
-            <span class="svc__num" aria-hidden="true">03</span>
-            <span class="svc__name">Contact &amp; suivi</span>
-            <span class="svc__icon" aria-hidden="true"></span>
-          </button>
-        </h3>
-        <div class="svc__panel svc__panel--3" id="svc-3" role="region" aria-labelledby="svc-btn-3" hidden>
-          <p class="svc__desc">Formulaire, WhatsApp, réservation en ligne, maintenance : tout ce qu’il faut au quotidien.</p>
-          <ul class="ticks" role="list">
-            <li>Contact WhatsApp, formulaire et carte</li>
-            <li>Intégration d’un outil de réservation</li>
-            <li>Maintenance facultative dès CHF 99 / mois</li>
-          </ul>
-          <a class="link-draw" href="#offres">Voir les offres <span aria-hidden="true">→</span></a>
-        </div>
+  <!-- 4 · Qui sommes-nous -->
+  <section class="section home-who" aria-labelledby="who-title">
+    <div class="wrap home-who__grid">
+      <div class="home-who__photo"><img src="img/portrait.webp" alt="Portrait de Johann Kenzo, fondateur de Méridel" width="208" height="260" loading="lazy" decoding="async"></div>
+      <div class="home-who__text">
+        <p class="overline">Qui sommes-nous</p>
+        <h2 class="h2" id="who-title" data-words data-line-anchor="right">Un studio genevois. Un seul interlocuteur.</h2>
+        <p class="lead">Derrière Méridel, Johann Kenzo. Il vous accompagne de la première conversation à la mise en ligne : vous savez toujours ce qui est prévu, et à qui parler.</p>
+        <a class="link-draw" href="studio.html">Découvrir le studio <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <!-- 5 · Votre nom, mis en scène -->
-  <section class="section nameplay" id="votre-nom" aria-labelledby="nameplay-title">
- <div class="wrap">
-  <p class="overline">L’atelier de votre identité</p>
-  <h2 class="h2" id="nameplay-title" data-words data-line-anchor="left">Votre nom. Votre caractère.</h2>
-  <div class="atelier" data-nameplay>
-   <div class="atelier__controls">
-    <label class="np__label" for="np-input">Le nom de votre entreprise</label>
-    <input class="np__input" id="np-input" maxlength="40" autocomplete="organization" placeholder="Votre entreprise" data-np-input>
-    <fieldset class="atelier__group"><legend>01 / Une voix</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-font" value="classique" checked><span>Classique</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="contemporain" ><span>Contemporain</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="audacieux" ><span>Audacieux</span></label><label class="atelier__choice"><input type="radio" name="logo-font" value="naturel" ><span>Naturel</span></label></div></fieldset>
-    <fieldset class="atelier__group"><legend>02 / Une couleur</legend><div class="atelier__colors"><label class="atelier__swatch" style="--swatch:#111A22"><input type="radio" name="logo-color" value="encre" checked><span aria-hidden="true"></span><span class="vh">Encre</span></label><label class="atelier__swatch" style="--swatch:#1F4E5A"><input type="radio" name="logo-color" value="leman" ><span aria-hidden="true"></span><span class="vh">Léman</span></label><label class="atelier__swatch" style="--swatch:#9B4327"><input type="radio" name="logo-color" value="terre" ><span aria-hidden="true"></span><span class="vh">Terre cuite</span></label><label class="atelier__swatch" style="--swatch:#365743"><input type="radio" name="logo-color" value="foret" ><span aria-hidden="true"></span><span class="vh">Forêt</span></label><label class="atelier__swatch" style="--swatch:#67415C"><input type="radio" name="logo-color" value="prune" ><span aria-hidden="true"></span><span class="vh">Prune</span></label><label class="atelier__swatch" style="--swatch:#304F9B"><input type="radio" name="logo-color" value="cobalt" ><span aria-hidden="true"></span><span class="vh">Cobalt</span></label><span class="micro" data-color-name>Encre</span></div></fieldset>
-    <fieldset class="atelier__group"><legend>03 / Un signe tiré de votre nom</legend><div class="atelier__marks"><label class="atelier__mark"><input type="radio" name="logo-symbol" value="none" checked><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false"><path d="M14 50L50 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg><small>Aucun</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="monogram"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="monogram"></svg><small>Initiales</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="sceau"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="sceau"></svg><small>Sceau</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="taille"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="taille"></svg><small>Taille</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="entrelacs"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="entrelacs"></svg><small>Entrelacs</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="rythme"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="rythme"></svg><small>Rythme</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="trace"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="trace"></svg><small>Tracé</small></span></label><label class="atelier__mark"><input type="radio" name="logo-symbol" value="ecusson"><span><svg viewBox="-4 -4 72 72" aria-hidden="true" focusable="false" data-mark="ecusson"></svg><small>Écusson</small></span></label></div><button class="atelier__variants link-draw" type="button" data-variants>Autres variantes <span aria-hidden="true">↻</span></button></fieldset>
-    <details class="atelier__details"><summary>Affiner la composition <span aria-hidden="true">+</span></summary>
-     <fieldset class="atelier__group"><legend>Disposition</legend><div class="atelier__choices"><label class="atelier__choice"><input type="radio" name="logo-layout" value="inline" checked><span>En ligne</span></label><label class="atelier__choice"><input type="radio" name="logo-layout" value="stack" ><span>Empilée</span></label></div></fieldset>
-     <label class="atelier__range" for="logo-spacing">Espacement <input id="logo-spacing" type="range" min="0" max="5" step="0.5" value="0"></label>
-    </details>
-    <button class="atelier__inspire link-draw" type="button" data-inspire>Inspirez-moi <span aria-hidden="true">↗</span></button>
-   </div>
-   <div class="atelier__preview">
-    <fieldset class="atelier__views"><legend class="vh">Voir votre identité en situation</legend><label class="atelier__choice"><input type="radio" name="logo-view" value="logo" checked><span>Logo</span></label><label class="atelier__choice"><input type="radio" name="logo-view" value="card" ><span>Carte</span></label><label class="atelier__choice"><input type="radio" name="logo-view" value="shop" ><span>Enseigne</span></label><label class="atelier__choice"><input type="radio" name="logo-view" value="phone" ><span>Mobile</span></label></fieldset>
-    <div class="atelier__canvas" data-canvas>
-     <div class="atelier__scene atelier__scene--logo" data-scene="logo"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg><p class="atelier__signature">Une première idée. Déjà votre caractère.</p></div>
-     <div class="atelier__scene" data-scene="card" hidden><button class="atelier__card" type="button" aria-label="Retourner la carte de visite" aria-pressed="false" data-flip><span class="atelier__card-inner"><span class="atelier__card-front"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg><span class="atelier__card-tag">Suisse romande</span></span><span class="atelier__card-back" aria-hidden="true"><span>Contact</span><strong data-card-name></strong><span>Votre prochaine rencontre.</span></span></span></button><p class="atelier__hint">Touchez la carte pour la retourner ↻</p></div>
-     <div class="atelier__scene" data-scene="shop" hidden><div class="atelier__shop"><div class="atelier__sign"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg></div><div class="atelier__awning"></div><div class="atelier__facade"><span></span><span class="atelier__door"><i>Ouvert</i></span><span></span></div></div><p class="atelier__hint">Une identité qui a pignon sur rue.</p></div>
-     <div class="atelier__scene" data-scene="phone" hidden><div class="atelier__phone"><div class="atelier__phone-top"><svg class="atelier__logo" viewBox="0 0 600 190" role="img" aria-label="Aperçu de votre identité"><g data-logo-symbol></g><text data-logo-text x="300" y="110" text-anchor="middle">Votre entreprise</text></svg><span aria-hidden="true">☰</span></div><div class="atelier__phone-body"><small>BIENVENUE CHEZ VOUS</small><strong data-phone-name></strong><p>Le savoir-faire qui fait la différence.</p><span class="atelier__phone-cta">Découvrir nos services ↗</span><div class="atelier__phone-art" aria-hidden="true"><i></i><i></i><i></i></div></div></div></div>
-    </div>
-    <div class="atelier__footer"><p class="micro" data-logo-status role="status">Classique · Encre · Aucun</p><button class="link-draw" type="button" data-logo-reset>Réinitialiser</button></div>
-   </div>
-  </div>
-  <div class="np__outro"><div><p class="lead">Une piste vous plaît ? Faisons-en votre identité.</p><p class="micro">Exploration libre, sans envoi ni enregistrement. Une direction à affiner ensemble.</p></div><a class="btn btn--primary" href="#contact" data-logo-contact>Partir de cette idée <span class="btn__arrow" aria-hidden="true">→</span></a></div>
- </div>
-</section>
-
-  <!-- 6 · Méthode -->
-  <section class="section methode tone-night" id="methode" aria-labelledby="methode-title" data-methode>
-    <div class="methode__pin" data-methode-pin>
-      <div class="wrap methode__head">
-        <p class="overline">Méthode</p>
-        <h2 class="h2" id="methode-title" data-words>Quatre étapes. Aucune zone d’ombre.</h2>
-      </div>
-      <div class="methode__viewport">
-        <ol class="methode__track" role="list" data-methode-track>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">01</span>
-            <h3 class="step__title">Échange</h3>
-            <p class="step__text">On écoute votre activité, vos clients, vos objectifs.</p>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">02</span>
-            <h3 class="step__title">Proposition</h3>
-            <p class="step__text">Un devis clair : périmètre, prix, délais. Pas de surprise.</p>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">03</span>
-            <h3 class="step__title">Création</h3>
-            <p class="step__text">Design, textes intégrés, retours regroupés. Vous validez chaque étape.</p>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">04</span>
-            <h3 class="step__title">Mise en ligne</h3>
-            <p class="step__text">Tests sur mobile et ordinateur, publication, prise en main. Et on reste là.</p>
-          </li>
-          <li class="methode__rail" aria-hidden="true"></li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- Votre projet en 30 secondes -->
-  <section class="section projet" id="projet" aria-labelledby="projet-title">
-    <div class="wrap projet__grid">
-      <div class="projet__intro">
-        <p class="overline">Votre projet</p>
-        <h2 class="h2" id="projet-title" data-words data-line-anchor="left">Votre projet en 30 secondes.</h2>
-        <p class="lead">Quatre questions pour savoir quelle formule vous correspond. Une question à la fois, puis une formule adaptée.</p>
-      </div>
-
-      <form class="quiz" data-quiz novalidate>
-        <div class="quiz__progress" aria-hidden="true"><span class="is-on"></span><span></span><span></span><span></span></div>
-
-        <fieldset class="quiz__step is-active" data-step="1">
-          <legend class="quiz__q" tabindex="-1"><span class="quiz__count">01 / 04</span>Votre activité, en quelques mots.</legend>
-          <div class="quiz__opts">
-            <label class="quiz__opt"><input type="radio" name="activite" value="independant" data-label="indépendant·e ou artisan"><span>Indépendant·e ou artisan</span></label>
-            <label class="quiz__opt"><input type="radio" name="activite" value="commerce" data-label="commerce, restaurant ou salon"><span>Commerce, restaurant ou salon</span></label>
-            <label class="quiz__opt"><input type="radio" name="activite" value="liberale" data-label="cabinet ou profession libérale"><span>Cabinet ou profession libérale</span></label>
-            <label class="quiz__opt"><input type="radio" name="activite" value="pme" data-label="PME ou autre activité"><span>PME ou autre activité</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="quiz__step" data-step="2" hidden>
-          <legend class="quiz__q" tabindex="-1"><span class="quiz__count">02 / 04</span>Qu’attendez-vous d’abord de votre site ?</legend>
-          <div class="quiz__opts">
-            <label class="quiz__opt"><input type="radio" name="objectif" value="presenter" data-label="présenter mes services"><span>Présenter clairement mes services</span></label>
-            <label class="quiz__opt"><input type="radio" name="objectif" value="local" data-label="être trouvé localement"><span>Être trouvé près de chez moi</span></label>
-            <label class="quiz__opt"><input type="radio" name="objectif" value="reservation" data-label="recevoir des réservations"><span>Recevoir des réservations en ligne</span></label>
-            <label class="quiz__opt"><input type="radio" name="objectif" value="image" data-label="une image qui me distingue"><span>Une image haut de gamme, qui me distingue</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="quiz__step" data-step="3" hidden>
-          <legend class="quiz__q" tabindex="-1"><span class="quiz__count">03 / 04</span>Combien avez-vous à présenter ?</legend>
-          <div class="quiz__opts">
-            <label class="quiz__opt"><input type="radio" name="contenu" value="0" data-label="une page"><span>L’essentiel tient sur une page</span></label>
-            <label class="quiz__opt"><input type="radio" name="contenu" value="1" data-label="quelques pages"><span>Quelques pages : services, à propos, contact</span></label>
-            <label class="quiz__opt"><input type="radio" name="contenu" value="2" data-label="un site plus riche"><span>Un site plus riche, jusqu’à 8 pages</span></label>
-            <label class="quiz__opt"><input type="radio" name="contenu" value="" data-label="à définir"><span>Je ne sais pas encore</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="quiz__step" data-step="4" hidden>
-          <legend class="quiz__q" tabindex="-1"><span class="quiz__count">04 / 04</span>Pour quand ?</legend>
-          <div class="quiz__opts">
-            <label class="quiz__opt"><input type="radio" name="calendrier" value="vite" data-label="dès que possible"><span>Dès que possible</span></label>
-            <label class="quiz__opt"><input type="radio" name="calendrier" value="mois" data-label="dans le mois"><span>Dans le mois</span></label>
-            <label class="quiz__opt"><input type="radio" name="calendrier" value="plus" data-label="dans les prochains mois"><span>Dans les prochains mois</span></label>
-            <label class="quiz__opt"><input type="radio" name="calendrier" value="libre" data-label="sans date précise"><span>Pas de date précise</span></label>
-          </div>
-        </fieldset>
-
-        <div class="quiz__result" data-quiz-result hidden tabindex="-1">
-          <p class="quiz__kicker">Notre recommandation</p>
-          <p class="quiz__plan" data-quiz-plan></p>
-          <p class="quiz__price" data-quiz-price></p>
-          <ul class="ticks quiz__why" role="list" data-quiz-why></ul>
-          <div class="quiz__actions">
-            <a class="btn btn--primary" href="#contact" data-quiz-cta data-magnetic>Continuer vers le contact <span class="btn__arrow" aria-hidden="true">→</span></a>
-            <a class="link-draw" href="#offres" data-quiz-see>Voir le détail des offres</a>
-          </div>
-          <button class="quiz__restart" type="button" data-quiz-restart>Recommencer</button>
-        </div>
-
-        <div class="quiz__nav" data-quiz-nav>
-          <button class="quiz__back" type="button" data-quiz-prev disabled><span aria-hidden="true">←</span> Retour</button>
-          <p class="quiz__status micro" aria-live="polite" data-quiz-status>Étape 1 sur 4</p>
-          <button class="btn btn--primary quiz__next" type="button" data-quiz-next disabled>Continuer <span class="btn__arrow" aria-hidden="true">→</span></button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- 7 · Offres -->
-  <section class="section offres" id="offres" aria-labelledby="offres-title">
-    <div class="wrap">
-      <p class="overline">Offres</p>
-      <h2 class="h2" id="offres-title" data-words data-line-anchor="right">Un périmètre clair. Un prix annoncé.</h2>
-      <div class="plans">
-        <article class="plan">
-          <h3 class="plan__name">Landing Page</h3>
-          <p class="plan__desc">Une page convaincante pour une offre, un lancement ou une activité essentielle.</p>
-          <p class="plan__price"><span class="plan__cur">CHF</span> <span class="plan__amount">490</span></p>
-          <p class="plan__terms">à partir de · paiement unique</p>
-          <ul class="ticks" role="list">
-            <li>1 page, jusqu’à 6 sections</li>
-            <li>Contact WhatsApp ou formulaire simple</li>
-            <li>Titres et métadonnées essentiels</li>
-            <li>1 série de retours regroupés</li>
-            <li>Délai indicatif : 5–7 jours ouvrés</li>
-          </ul>
-          <a class="btn btn--ghost plan__cta" href="#contact" data-offer="landing">Choisir Landing Page <span class="btn__arrow" aria-hidden="true">→</span></a>
-        </article>
-        <article class="plan plan--featured">
-          <svg class="plan__outline" aria-hidden="true" focusable="false"><rect x="1" y="1" width="100%" height="100%" rx="3" pathLength="1"/></svg>
-          <p class="plan__badge">Présence complète</p>
-          <h3 class="plan__name">Site Business</h3>
-          <p class="plan__desc">Un site structuré pour présenter vos services et inspirer confiance.</p>
-          <p class="plan__price"><span class="plan__cur">CHF</span> <span class="plan__amount">790–990</span></p>
-          <p class="plan__terms">selon le périmètre · paiement unique</p>
-          <ul class="ticks" role="list">
-            <li>Jusqu’à 5 pages</li>
-            <li>Design personnalisé à votre activité</li>
-            <li>Formulaire, WhatsApp et carte</li>
-            <li>Structure SEO et indexation technique</li>
-            <li>2 séries de retours regroupés</li>
-            <li>Délai indicatif : 10–15 jours ouvrés</li>
-          </ul>
-          <a class="btn btn--primary plan__cta" href="#contact" data-offer="business" data-magnetic>Choisir Site Business <span class="btn__arrow" aria-hidden="true">→</span></a>
-        </article>
-        <article class="plan">
-          <h3 class="plan__name">Signature</h3>
-          <p class="plan__desc">Une présence premium pour une activité qui demande davantage de singularité.</p>
-          <p class="plan__price"><span class="plan__cur">CHF</span> <span class="plan__amount">1’490–1’990</span></p>
-          <p class="plan__terms">selon le périmètre · paiement unique</p>
-          <ul class="ticks" role="list">
-            <li>Jusqu’à 8 pages</li>
-            <li>Direction artistique approfondie</li>
-            <li>Intégration d’un outil de réservation</li>
-            <li>3 séries de retours regroupés</li>
-            <li>Délai indicatif : 15–25 jours ouvrés</li>
-          </ul>
-          <a class="btn btn--ghost plan__cta" href="#contact" data-offer="signature">Choisir Signature <span class="btn__arrow" aria-hidden="true">→</span></a>
-        </article>
-      </div>
-
-      <p class="note">Toutes les offres incluent une langue (FR) et utilisent vos textes et visuels fournis. Paiement : 50 % au démarrage, 50 % avant la mise en ligne. Prix finaux en CHF. Domaine, hébergement, licences tierces, rédaction et traductions en supplément. Délais à compter de la réception des contenus et de l’acompte. <a class="link-draw" href="conditions-generales.html">Conditions générales</a></p>
-
-      <div class="accordions">
-        <details class="acc">
-          <summary class="acc__sum"><span>Maintenance — CHF 99, 149 ou 249 / mois</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body">
-            <div class="mplans">
-              <article class="mplan">
-                <h3 class="mplan__name">Essentiel</h3>
-                <p class="mplan__price">CHF 99 <span>/ mois</span></p>
-                <p class="mplan__desc">Pour garder une base technique saine.</p>
-                <ul class="ticks" role="list">
-                  <li>Vérification technique mensuelle</li>
-                  <li>Mises à jour applicables à votre site</li>
-                  <li>Sauvegarde hebdomadaire, rétention 30 jours</li>
-                  <li>Surveillance de disponibilité</li>
-                  <li>30 min de petites modifications / mois</li>
-                  <li>Réponse sous 2 jours ouvrés</li>
-                </ul>
-                <a class="link-draw" href="#contact" data-offer="maintenance" data-extra="Maintenance Essentiel — CHF 99 / mois">Ajouter Essentiel <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="mplan">
-                <h3 class="mplan__name">Évolution</h3>
-                <p class="mplan__price">CHF 149 <span>/ mois</span></p>
-                <p class="mplan__desc">Pour faire évoluer votre présence.</p>
-                <ul class="ticks" role="list">
-                  <li>Tout le plan Essentiel</li>
-                  <li>1 h de modifications / mois au total</li>
-                  <li>Rapport d’audience mensuel*</li>
-                  <li>Revue trimestrielle du SEO local</li>
-                  <li>Recommandations d’amélioration</li>
-                  <li>Réponse sous 1 jour ouvré</li>
-                </ul>
-                <a class="link-draw" href="#contact" data-offer="maintenance" data-extra="Maintenance Évolution — CHF 149 / mois">Ajouter Évolution <span aria-hidden="true">→</span></a>
-              </article>
-              <article class="mplan">
-                <h3 class="mplan__name">Partenaire</h3>
-                <p class="mplan__price">CHF 249 <span>/ mois</span></p>
-                <p class="mplan__desc">Pour un accompagnement plus régulier.</p>
-                <ul class="ticks" role="list">
-                  <li>Tout le plan Évolution</li>
-                  <li>2 h de modifications / mois au total</li>
-                  <li>Revue SEO local mensuelle</li>
-                  <li>Mise à jour de la fiche Google Business</li>
-                  <li>Point de suivi de 30 min / mois</li>
-                  <li>Traitement prioritaire, réponse sous 1 jour ouvré</li>
-                </ul>
-                <a class="link-draw" href="#contact" data-offer="maintenance" data-extra="Maintenance Partenaire — CHF 249 / mois">Ajouter Partenaire <span aria-hidden="true">→</span></a>
-              </article>
-            </div>
-            <p class="note">Sans engagement annuel, résiliable avec un préavis de 30 jours. Temps non utilisé non reportable. Nouvelles pages et fonctionnalités sur devis. Délais de réponse en jours ouvrés, du lundi au vendredi, hors jours fériés. Surveillance automatisée, sans intervention 24 h/24. Hébergement et licences non inclus.</p>
-            <p class="note">* Selon l’outil de mesure et les autorisations retenus.</p>
-          </div>
-        </details>
-        <details class="acc">
-          <summary class="acc__sum"><span>Options &amp; projets sur mesure</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body">
-            <dl class="extras">
-              <div class="extra"><dt>Page supplémentaire</dt><dd>dès CHF 120</dd></div>
-              <div class="extra"><dt>Rédaction web, par page</dt><dd>dès CHF 150</dd></div>
-              <div class="extra"><dt>Brand lite : palette, typos &amp; mot-symbole</dt><dd>dès CHF 290</dd></div>
-              <div class="extra"><dt>Google Business Profile : optimisation initiale</dt><dd>dès CHF 190</dd></div>
-              <div class="extra"><dt>Intégration d’un outil de réservation</dt><dd>dès CHF 150</dd></div>
-              <div class="extra"><dt>Langue supplémentaire</dt><dd>sur devis</dd></div>
-            </dl>
-            <p class="note">Brand lite : une piste créative et une série de retours. Traductions, abonnements aux outils tiers et vérification de marque non inclus. L’optimisation Google nécessite votre accès autorisé à une fiche éligible.</p>
-            <a class="link-draw" href="#contact" data-offer="surmesure">Demander une proposition sur mesure <span aria-hidden="true">→</span></a>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8 · À propos -->
-  <section class="section apropos" id="apropos" aria-labelledby="apropos-title">
-    <div class="wrap apropos__grid">
-      <p class="overline">À propos</p>
-      <h2 class="h2" id="apropos-title" data-words data-line-anchor="left">Un interlocuteur. Du début à la fin.</h2>
-      <div class="apropos__body">
-        <p class="lead apropos__text">Un studio indépendant dédié aux PME de Suisse romande. Nous cadrons le projet, validons le design avec vous, puis préparons la mise en ligne. Vous savez ce qui est prévu à chaque étape.</p>
-        <div class="apropos__person">
-          <div class="apropos__photo" data-photo><img src="img/portrait.webp" alt="Portrait de Johann Kenzo" width="208" height="260" loading="lazy" decoding="async"></div>
-          <p class="apropos__sig">Derrière Méridel : <strong>Johann Kenzo</strong>, qui vous accompagne de la première conversation à la mise en ligne.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9 · Questions -->
-  <section class="section questions" id="questions" aria-labelledby="questions-title">
-    <div class="wrap questions__grid">
+  <section class="section cta-band" aria-labelledby="cta-title">
+    <div class="wrap cta-band__inner">
       <div>
-        <p class="overline">Questions</p>
-        <h2 class="h2" id="questions-title" data-words>Les réponses, sans détour.</h2>
+        <p class="overline">Contact</p>
+        <h2 class="h2" id="cta-title" data-words data-line-anchor="left">Un projet en tête ?</h2>
+        <p class="lead cta-band__lead">Deux minutes pour nous écrire. Réponse sous 1 jour ouvré, devis clair et sans engagement.</p>
       </div>
-      <div class="faq">
-        <details class="acc">
-          <summary class="acc__sum"><span>Quels contenus dois-je préparer, et en combien de temps est-ce prêt ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Les délais figurent dans les offres et sont confirmés au devis. Ils démarrent à réception des textes, images et de l’acompte. Une langue est incluse ; d’autres langues peuvent être ajoutées sur devis. La rédaction peut aussi être déléguée en option.</p></div>
-        </details>
-        <details class="acc">
-          <summary class="acc__sum"><span>Comment se passent les retours et le paiement ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Chaque offre inclut un nombre de séries de retours regroupés sur le périmètre validé. Les ajouts sont chiffrés séparément. Acompte de 50 % au démarrage, solde après validation finale et avant publication.</p></div>
-        </details>
-        <details class="acc">
-          <summary class="acc__sum"><span>À qui appartiennent le site et le domaine ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Le domaine est enregistré à votre nom et facturé séparément, comme l’hébergement. Après paiement intégral, vous recevez les droits, livrables et accès convenus au devis. Les ressources tierces restent soumises à leurs licences. Les conditions de portabilité sont précisées avant le projet.</p></div>
-        </details>
-        <details class="acc">
-          <summary class="acc__sum"><span>La maintenance est-elle obligatoire ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Non. Elle est facultative, sans engagement annuel, résiliable avec 30 jours de préavis.</p></div>
-        </details>
-        <details class="acc">
-          <summary class="acc__sum"><span>J’ai déjà un site. Pouvez-vous le refaire ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Oui. Nous partons de l’existant, gardons ce qui fonctionne et reconstruisons le reste.</p></div>
-        </details>
-        <details class="acc">
-          <summary class="acc__sum"><span>Le site peut-il être en plusieurs langues ?</span><span class="acc__icon" aria-hidden="true"></span></summary>
-          <div class="acc__body"><p>Oui. Une langue est incluse (FR), et d’autres langues peuvent être ajoutées sur devis.</p></div>
-        </details>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="contact.html" data-magnetic>Parlons-en <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a class="link-draw" href="https://wa.me/41767006297" data-wa-direct rel="noopener">ou sur WhatsApp <span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  </section>
-
-  <!-- 10 · Contact -->
-  <section class="section contact" id="contact" aria-labelledby="contact-title">
-    <div class="wrap">
-      <p class="overline">Contact</p>
-      <h2 class="h2" id="contact-title" data-words data-line-anchor="left">Parlons de votre projet.</h2>
-
-      <form class="phrase" id="contact-form" novalidate data-contact>
-<p class="contact__recommendation" data-contact-recommendation hidden role="status"></p>
-        <p class="phrase__text">
-          Bonjour, <span data-contact-name>je m’appelle
-          <label class="vh" for="f-name">Votre nom</label>
-          <span class="phrase__slot"><input class="phrase__field" id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="votre nom" size="10" aria-describedby="err-name">,</span>
-          </span>je dirige
-          <label class="vh" for="f-company">Votre entreprise ou activité</label>
-          <input class="phrase__field" id="f-company" name="company" type="text" autocomplete="organization" required maxlength="120" placeholder="votre entreprise / activité" size="20" aria-describedby="err-company">
-          à
-          <label class="vh" for="f-city">Ville</label>
-          <span class="phrase__slot"><input class="phrase__field" id="f-city" name="city" type="text" autocomplete="address-level2" maxlength="60" placeholder="ville" size="6">.</span>
-          J’aimerais
-          <label class="vh" for="f-goal">Votre besoin</label>
-          <span class="phrase__select"><select class="phrase__field" id="f-goal" name="goal">
-            <option value="créer un site">créer un site</option>
-            <option value="refaire mon site">refaire mon site</option>
-            <option value="être mieux trouvé localement">être mieux trouvé localement</option>
-            <option value="autre chose">autre chose</option>
-          </select></span>
-          et l’offre qui m’intéresse est
-          <label class="vh" for="f-offer">Offre</label>
-          <span class="phrase__slot"><span class="phrase__select"><select class="phrase__field" id="f-offer" name="offer" data-offer-select>
-            <option value="à définir ensemble" data-key="adefinir">à définir ensemble</option>
-            <option value="la Landing Page" data-key="landing">la Landing Page</option>
-            <option value="le Site Business" data-key="business">le Site Business</option>
-            <option value="l’offre Signature" data-key="signature">l’offre Signature</option>
-            <option value="une maintenance" data-key="maintenance">une maintenance</option>
-            <option value="un projet sur mesure" data-key="surmesure">un projet sur mesure</option>
-          </select></span>.</span>
-          Vous pouvez me répondre à
-          <label class="vh" for="f-reply">E-mail ou téléphone</label>
-          <span class="phrase__slot"><input class="phrase__field" id="f-reply" name="reply" type="text" inputmode="email" autocomplete="email" required maxlength="120" placeholder="e-mail ou téléphone" size="16" aria-describedby="err-reply">.</span>
-        </p>
-        <p class="phrase__text phrase__text--more">
-          <label for="f-more">Un mot de plus ?</label>
-          <textarea class="phrase__field phrase__more" id="f-more" name="more" rows="2" maxlength="1500" placeholder="optionnel"></textarea>
-        </p>
-
-        <ul class="phrase__errors" role="list" aria-live="assertive" data-errors>
-          <li id="err-name" hidden>Indiquez votre nom.</li>
-          <li id="err-company" hidden>Indiquez le nom de votre entreprise ou votre activité.</li>
-          <li id="err-reply" hidden>Indiquez une adresse e-mail valide ou un numéro de téléphone.</li>
-        </ul>
-
-        <div class="phrase__actions">
-          <button class="btn btn--primary" type="submit" name="via" value="whatsapp" data-magnetic>Envoyer via WhatsApp <span class="btn__arrow" aria-hidden="true">↗</span></button>
-          <button class="btn btn--ghost" type="submit" name="via" value="email" data-email-btn>Envoyer par e-mail <span class="btn__arrow" aria-hidden="true">↗</span></button>
-        </div>
-        <p class="micro phrase__status" role="status" data-status></p>
-        <p class="micro phrase__delay">Réponse sous 1 jour ouvré.</p>
-        <p class="micro phrase__privacy">Rien n’est enregistré sur ce site. Votre message s’ouvre dans WhatsApp ou votre messagerie, et n’est envoyé qu’après votre confirmation. <a class="link-draw" href="confidentialite.html">Déclaration de confidentialité</a></p>
-      </form>
-
-      <p class="contact__direct">Ou directement : <a class="link-draw" href="https://wa.me/41767006297" data-wa-direct rel="noopener">WhatsApp +41 76 700 62 97</a> · <span data-email-direct><a href="mailto:contact@meridel.ch">contact@meridel.ch</a></span></p>
     </div>
   </section>
 </main>
@@ -580,19 +214,19 @@
 <footer class="site-footer tone-night">
   <div class="wrap site-footer__inner">
     <div class="site-footer__brand">
-      <a class="logo logo--footer" href="#top" aria-label="Méridel, retour en haut de page">
+      <a class="logo logo--footer" href="./" aria-label="Méridel, accueil">
         <svg class="logo__svg" viewBox="-204 -1975 6064 2535" aria-hidden="true" focusable="false"><use href="img/logo.svg#meridel" x="-204" y="-1975" width="6064" height="2535"/></svg>
       </a>
-      <p class="site-footer__tag" data-line-end>La ligne juste.</p>
+      <p class="site-footer__tag" data-line-end>La ligne juste.</p>
+      <p class="site-footer__contact micro"><a class="link-draw" href="https://wa.me/41767006297" data-wa-direct rel="noopener">WhatsApp +41 76 700 62 97</a> · <a class="link-draw" href="mailto:contact@meridel.ch">contact@meridel.ch</a></p>
     </div>
     <nav class="site-footer__nav" aria-label="Plan du site">
       <ul role="list">
-        <li><a class="link-draw" href="#approche">Approche</a></li>
-        <li><a class="link-draw" href="#services">Services</a></li>
-        <li><a class="link-draw" href="#offres">Offres</a></li>
-        <li><a class="link-draw" href="#methode">Méthode</a></li>
-        <li><a class="link-draw" href="#questions">Questions</a></li>
-        <li><a class="link-draw" href="#contact">Contact</a></li>
+        <li><a class="link-draw" href="./" aria-current="page">Accueil</a></li>
+        <li><a class="link-draw" href="offres.html">Offres</a></li>
+        <li><a class="link-draw" href="studio.html">Studio</a></li>
+        <li><a class="link-draw" href="atelier.html">Atelier</a></li>
+        <li><a class="link-draw" href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <nav class="site-footer__legal" aria-label="Informations légales">
@@ -602,7 +236,7 @@
         <li><a class="link-draw" href="conditions-generales.html">Conditions générales</a></li>
       </ul>
     </nav>
-    <p class="site-footer__copy micro">© 2026 Méridel</p>
+    <p class="site-footer__copy micro">© 2026 Méridel · Genève</p>
   </div>
 </footer>
 

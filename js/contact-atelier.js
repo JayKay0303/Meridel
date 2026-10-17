@@ -1,5 +1,7 @@
 // Formulaire en forme de phrase : prépare un message WhatsApp ou un e-mail.
 // Rien n'est enregistré ni envoyé par le site lui-même.
+import { readHandoff, saveHandoff, clearHandoff } from './handoff.js';
+
 const cfg = () => window.SITE_CONFIG || {};
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const isPhone = (v) => /^[+()\d\s./-]{7,}$/.test(v) && v.replace(/\D/g, '').length >= 9;
@@ -28,22 +30,33 @@ export function initContact() {
     emailBtn.hidden = true;
   }
 
-  // Boutons « Choisir … » : présélection de l'offre dans la phrase.
-  const offerSelect = form?.querySelector('[data-offer-select]');
-  const more = form?.querySelector('#f-more');
-  offerSelect?.addEventListener('change', () => {
-    const notice = form.querySelector('[data-contact-recommendation]');
-    if (notice) notice.hidden = true;
-  });
+  // Boutons « Choisir … » (page Offres) : l'offre suit le visiteur jusqu'à la page Contact.
   document.querySelectorAll('[data-offer]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const opt = offerSelect?.querySelector(`option[data-key="${btn.dataset.offer}"]`);
-      if (opt) { offerSelect.value = opt.value; offerSelect.dispatchEvent(new Event('input')); }
-      if (btn.dataset.extra && more && !more.value.trim()) more.value = btn.dataset.extra;
-      setTimeout(() => form?.querySelector('#f-name')?.focus({ preventScroll: true }), 700);
-    });
+    btn.addEventListener('click', () => saveHandoff({ offer: btn.dataset.offer, extra: btn.dataset.extra || '' }));
   });
   if (!form) return;
+
+  // Arrivée sur la page Contact : on préremplit la phrase avec ce qui a été choisi ailleurs.
+  const offerSelect = form.querySelector('[data-offer-select]');
+  const more = form.querySelector('#f-more');
+  const notice = form.querySelector('[data-contact-recommendation]');
+  offerSelect?.addEventListener('change', () => { if (notice) notice.hidden = true; });
+  const setOffer = (key) => {
+    const opt = key && offerSelect?.querySelector(`option[data-key="${CSS.escape(key)}"]`);
+    if (opt) offerSelect.value = opt.value;
+  };
+  const h = readHandoff();
+  const fromUrl = new URLSearchParams(location.search).get('offre');
+  setOffer(h.offer || fromUrl);
+  if (fromUrl && h.offer && fromUrl !== h.offer) setOffer(fromUrl);
+  const goal = form.querySelector('#f-goal');
+  if (h.goal && goal) goal.value = h.goal;
+  const company = form.querySelector('#f-company');
+  if (h.company && company && !company.value.trim()) company.value = h.company;
+  const extras = [fromUrl && h.offer && fromUrl !== h.offer ? '' : h.extra, h.logo, h.quiz].filter(Boolean);
+  if (more && extras.length && !more.value.trim()) more.value = extras.join('\n\n').slice(0, more.maxLength);
+  if (h.quiz) form.dataset.quizSummary = h.quiz;
+  if (h.notice && notice) { notice.textContent = h.notice; notice.hidden = false; }
 
   // Largeur automatique des champs quand « field-sizing » n'est pas pris en charge.
   if (!(window.CSS && CSS.supports && CSS.supports('field-sizing', 'content'))) {
@@ -87,6 +100,7 @@ export function initContact() {
     const extra = [v('#f-more'), ...(form.dataset.quizSummary && !v('#f-more').includes(form.dataset.quizSummary) ? [form.dataset.quizSummary] : [])].filter(Boolean).join('\n\n');
     const message = ['Bonjour,', '', phrase, ...(extra ? ['', extra] : []), '', 'Bien cordialement,', name].join('\n');
     const via = e.submitter?.value || 'whatsapp';
+    clearHandoff();
 
     if (via === 'email' && email) {
       const subject = `Projet de site — ${company}`;
